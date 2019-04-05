@@ -11,15 +11,14 @@ import java.util.Map;
 
 
 public class Manager implements Authentication {
-    HashMap <String, String> managerDB = new HashMap<>();
+    HashMap<String, String> managerDB = new HashMap<>();
 
     @Override
     public boolean createAccount(String username, String password) {
         managerDB.put(username, password);
         return true;
     }
-    
-    
+
     @Override
     public boolean authenticate(String username, String password) {
         return (managerDB.get(username).equals(password));

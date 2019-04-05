@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package busstation.Authentication;
 
 import java.util.HashMap;
 
-
 public class Driver implements Authentication {
 
-       HashMap <String, String> driverDB = new HashMap<>();
+    HashMap<String, String> driverDB = new HashMap<>();
 
     @Override
     public boolean createAccount(String username, String password) {
         driverDB.put(username, password);
         return true;
     }
-    
-    
+
     @Override
     public boolean authenticate(String username, String password) {
         return (driverDB.get(username).equals(password));

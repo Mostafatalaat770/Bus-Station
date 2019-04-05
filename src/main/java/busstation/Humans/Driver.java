@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package busstation.Humans;
-
 
 public class Driver extends Employees {
 
     private double salary;
     private boolean working;
-
 
     public Driver(String name, int age, String address, double salary) {
         super(name, age, address);
@@ -26,12 +23,12 @@ public class Driver extends Employees {
         this.salary = salary;
     }
 
-        public boolean isWorking() {
+    public boolean isWorking() {
         return working;
     }
 
     public void setWorking(boolean working) {
         this.working = working;
     }
-    
+
 }

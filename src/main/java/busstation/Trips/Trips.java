@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package busstation.Trips;
 
 /**
@@ -11,10 +10,11 @@ package busstation.Trips;
  * @author Mostafa Talaat
  */
 public abstract class Trips {
-private double price;
-private String distance;
-private double duration;
-private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
+
+    private double price;
+    private String distance;
+    private double duration;
+    private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
     public double getPrice() {
         return price;

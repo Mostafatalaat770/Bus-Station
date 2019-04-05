@@ -10,10 +10,11 @@ package busstation.Vehicles;
  * @author Mostafa Talaat
  */
 public abstract class Vehicles {
-    private  int capacity;
-    private  boolean specialNeeds;
-    private  boolean AC;
-    private  boolean WIFI;
+
+    private int capacity;
+    private boolean specialNeeds;
+    private boolean AC;
+    private boolean WIFI;
 
     public Vehicles(int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
         this.capacity = capacity;
@@ -54,5 +55,4 @@ public abstract class Vehicles {
         this.WIFI = WIFI;
     }
 
-   
-    }
+}

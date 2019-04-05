@@ -44,5 +44,5 @@ public abstract class Employees {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
 }
