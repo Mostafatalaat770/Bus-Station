@@ -10,10 +10,10 @@ package busstation.Vehicles;
  * @author Mostafa Talaat
  */
 public abstract class Vehicles {
-    private final int capacity;
-    private final boolean specialNeeds;
-    private final boolean AC;
-    private final boolean WIFI;
+    private  int capacity;
+    private  boolean specialNeeds;
+    private  boolean AC;
+    private  boolean WIFI;
 
     public Vehicles(int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
         this.capacity = capacity;
@@ -26,17 +26,33 @@ public abstract class Vehicles {
         return capacity;
     }
 
-    public boolean isSepcialNeeds() {
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public boolean isSpecialNeeds() {
         return specialNeeds;
+    }
+
+    public void setSpecialNeeds(boolean specialNeeds) {
+        this.specialNeeds = specialNeeds;
     }
 
     public boolean isAC() {
         return AC;
     }
 
+    public void setAC(boolean AC) {
+        this.AC = AC;
+    }
+
     public boolean isWIFI() {
         return WIFI;
     }
-    
-    
+
+    public void setWIFI(boolean WIFI) {
+        this.WIFI = WIFI;
+    }
+
+   
     }
