@@ -11,18 +11,11 @@ package busstation.Trips;
  */
 public abstract class Trips {
 
-    private double price;
     private String distance;
     private double duration;
     private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
-    public double getPrice() {
-        return price;
-    }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public String getDistance() {
         return distance;
@@ -48,8 +41,7 @@ public abstract class Trips {
         this.stopType = stopType;
     }
 
-    public Trips(double price, String distance, double duration) {
-        this.price = price;
+    public Trips( String distance, double duration) {
         this.distance = distance;
         this.duration = duration;
     }
