@@ -79,5 +79,15 @@ public class CustomersDB {
         customer.setPassword(newPassword);
         return true;
     }
+    
+    /**
+     * In order to access the database we have to send it's reference(object) to get its
+     * methods, so by returning its object, we get what we wanted.
+     * @return the database of customers
+     */
+    public ArrayList<Customer> getCustomers(){
+        
+        return customerDB;
+    }
 
 }
