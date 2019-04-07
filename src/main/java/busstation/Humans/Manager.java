@@ -7,8 +7,10 @@ package busstation.Humans;
 
 public class Manager extends Employees {
 
-    public Manager(String name, int age, String address) {
-        super(name, age, address);
+    public Manager(String username, String password, String name, int age, String address) {
+        super(username, password, name, age, address);
     }
+
+    
 
 }
