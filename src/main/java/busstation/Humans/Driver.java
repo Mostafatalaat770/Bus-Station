@@ -10,16 +10,17 @@ public class Driver extends Employees {
     private double salary;
     private boolean working;
 
-    public Driver(String name, int age, String address, double salary) {
-        super(name, age, address);
+    public Driver(String username, String password, String name, int age, String address, double salary, boolean working) {
+        super(username, password, name, age, address);
         this.salary = salary;
+        this.working = working;
     }
 
     public double getSalary() {
         return salary;
     }
 
-    protected void setSalary(double salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
