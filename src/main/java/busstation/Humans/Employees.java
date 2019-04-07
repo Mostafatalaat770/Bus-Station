@@ -11,14 +11,34 @@ package busstation.Humans;
  */
 public abstract class Employees {
 
+    private String username;
+    private String password;
     private String name;
     private int age;
     private String address;
 
-    public Employees(String name, int age, String address) {
+    public Employees(String username, String password, String name, int age, String address) {
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.age = age;
         this.address = address;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
