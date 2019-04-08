@@ -15,7 +15,7 @@ public abstract class Tickets {
     private boolean refundable;
     private boolean priority;
     private double discountPrecent;
-
+    
     public double calculate(boolean VIP) {
         if (VIP) {
             return (price * discountPrecent);
