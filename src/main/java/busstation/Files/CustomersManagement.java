@@ -72,7 +72,6 @@ public class CustomersManagement implements FileManagement {
     public boolean writeFile() {
         try {
             Formatter file = new Formatter("Customers.txt");
-            customersDB.getCustomers();
             for (int i = 0; i < customersDB.getCustomers().size(); i++) {
                 Customer tempCustomer = customersDB.getCustomers().get(i);
                 String username = tempCustomer.getUsername();
@@ -96,17 +95,5 @@ public class CustomersManagement implements FileManagement {
             return false;
         }
 
-    }
-
-    public static void main(String[] args) {
-        CustomersDB customersDB = new CustomersDB();
-        CustomersManagement customersManagement = new CustomersManagement(customersDB);
-        customersManagement.readFile();
-        customersDB.createAccount("Mostafa", "Swidan", "Ahmed Swidan", 20, true, true, 10);
-        Customer test;
-        customersDB.createAccount("Ahmed", "Swidan", "24 wink wink, love you <3", 24, true, true, 10);
-        customersManagement.writeFile();
-        test = customersDB.authenticate("Ahmed", "Swidan");
-        System.out.println(test.getName());
     }
 }
