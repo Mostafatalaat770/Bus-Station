@@ -7,8 +7,8 @@ package busstation.Trips;
 
 public class InternalTrip extends Trips {
 
-    public InternalTrip(String distance, double duration) {
-        super(distance, duration);
+    public InternalTrip(String name, String startPos, String endPos, String distance, double duration, int stopType) {
+        super(name, startPos, endPos, distance, duration, stopType);
     }
 
 }

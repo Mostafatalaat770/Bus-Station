@@ -11,11 +11,46 @@ package busstation.Trips;
  */
 public abstract class Trips {
 
+    private String name;
+    private String startPos;
+    private String endPos;
     private String distance;
     private double duration;
     private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
+    public Trips(String name, String startPos, String endPos, String distance, double duration, int stopType) {
+        this.name = name;
+        this.startPos = startPos;
+        this.endPos = endPos;
+        this.distance = distance;
+        this.duration = duration;
+        this.stopType = stopType;
+    }
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStartPos() {
+        return startPos;
+    }
+
+    public void setStartPos(String startPos) {
+        this.startPos = startPos;
+    }
+
+    public String getEndPos() {
+        return endPos;
+    }
+
+    public void setEndPos(String endPos) {
+        this.endPos = endPos;
+    }
 
     public String getDistance() {
         return distance;
@@ -41,9 +76,5 @@ public abstract class Trips {
         this.stopType = stopType;
     }
 
-    public Trips( String distance, double duration) {
-        this.distance = distance;
-        this.duration = duration;
-    }
 
 }
