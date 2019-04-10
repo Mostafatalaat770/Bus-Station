@@ -42,8 +42,8 @@ public class CustomersManagement {
         try {
             in = new Scanner(new File("Customers.txt"));
             in.useDelimiter(",|\\n");
-            int i = 0;
             while (in.hasNextLine()) {
+                int i = 0;
                 String username = in.next();
                 String password = in.next();
                 String name = in.next();
