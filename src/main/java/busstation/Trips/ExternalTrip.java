@@ -7,10 +7,8 @@ package busstation.Trips;
 
 public class ExternalTrip extends Trips {
 
-    public ExternalTrip(String name, String startPos, String endPos, String distance, double duration, int stopType) {
-        super(name, startPos, endPos, distance, duration, stopType);
+    public ExternalTrip(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, int stopType) {
+        super(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType);
     }
-
-
 
 }
