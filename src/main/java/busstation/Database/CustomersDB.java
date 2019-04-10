@@ -6,6 +6,7 @@
 package busstation.Database;
 
 import busstation.Humans.Customer;
+import busstation.Tickets.Tickets;
 import java.util.ArrayList;
 
 public class CustomersDB {
@@ -79,15 +80,46 @@ public class CustomersDB {
         customer.setPassword(newPassword);
         return true;
     }
-    
+
     /**
-     * In order to access the database we have to send it's reference(object) to get its
-     * methods, so by returning its object, we get what we wanted.
+     * In order to access the database we have to send it's reference(object) to
+     * get its methods, so by returning its object, we get what we wanted.
+     *
      * @return the database of customers
      */
-    public ArrayList<Customer> getCustomers(){
-        
+    public ArrayList<Customer> getCustomers() {
+
         return customerDB;
     }
 
+    public void addTicket(TripsDB tripsDB, String name, double startTime, double endTime, int seatNumber) {
+        for (int i = 0; i < tripsDB.getExternalTrips().size(); i++) {
+            String name1 = tripsDB.getExternalTrips().get(i).getName();
+            double startTime1 = tripsDB.getExternalTrips().get(i).getStartTime();
+            double endTime1 = tripsDB.getExternalTrips().get(i).getEndTime();
+            if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
+                String startPos = tripsDB.getExternalTrips().get(i).getStartPos();
+                String endPos = tripsDB.getExternalTrips().get(i).getEndPos();
+                double price = tripsDB.getExternalTrips().get(i).getPrice();
+                double discountPrecent = tripsDB.getExternalTrips().get(i).getDiscountPrecent();
+                int stopType = tripsDB.getExternalTrips().get(i).getStopType();
+                customerDB.get(getCustomers().size()-1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
+                return;
+            }
+        }
+        for (int i = 0; i < tripsDB.getInternalTrips().size(); i++) {
+            String name1 = tripsDB.getInternalTrips().get(i).getName();
+            double startTime1 = tripsDB.getInternalTrips().get(i).getStartTime();
+            double endTime1 = tripsDB.getInternalTrips().get(i).getEndTime();
+            if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
+                String startPos = tripsDB.getInternalTrips().get(i).getStartPos();
+                String endPos = tripsDB.getInternalTrips().get(i).getEndPos();
+                double price = tripsDB.getInternalTrips().get(i).getPrice();
+                double discountPrecent = tripsDB.getInternalTrips().get(i).getDiscountPrecent();
+                int stopType = tripsDB.getInternalTrips().get(i).getStopType();
+                customerDB.get(getCustomers().size()-1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
+                return;
+            }
+        }
+    }
 }
