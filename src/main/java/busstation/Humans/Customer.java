@@ -33,6 +33,13 @@ public class Customer {
         this.balance = balance;
     }
 
+    public void refund(Tickets ticket) {
+
+        balance += ticket.calculate(VIP, balance);
+        ticketsHistory.remove(ticket);
+
+    }
+
     public String getUsername() {
         return username;
     }
@@ -88,6 +95,9 @@ public class Customer {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
-    
+
+    public ArrayList<Tickets> getTicketsHistory() {
+        return ticketsHistory;
+    }
+
 }
