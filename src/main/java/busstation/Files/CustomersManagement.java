@@ -6,6 +6,7 @@
 package busstation.Files;
 
 import busstation.Database.CustomersDB;
+import busstation.Database.TripsDB;
 import busstation.Humans.Customer;
 import java.io.*;
 import java.util.Formatter;
@@ -15,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Mostafa Talaat
  */
-public class CustomersManagement implements FileManagement {
+public class CustomersManagement {
 
     private Scanner in;
     private final CustomersDB customersDB;
@@ -32,15 +33,16 @@ public class CustomersManagement implements FileManagement {
 
     /**
      * Read method which reads a predefined file and splits it in-order to get
-     * our parameters from it. The parameters are comma separated.
+     * our parameters from it.The parameters are comma separated.
      *
+     * @param tripsDB
      * @return Boolean
      */
-    @Override
-    public boolean readFile() {
+    public boolean readFile(TripsDB tripsDB) {
         try {
             in = new Scanner(new File("Customers.txt"));
             in.useDelimiter(",|\\n");
+            int i = 0;
             while (in.hasNextLine()) {
                 String username = in.next();
                 String password = in.next();
@@ -50,6 +52,17 @@ public class CustomersManagement implements FileManagement {
                 boolean VIP = Boolean.parseBoolean(in.next());
                 double balance = Double.parseDouble(in.next());
                 customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
+                if (in.hasNext("*")) {
+                    String tickets = in.nextLine();
+                    String[] ticketsInfo = tickets.split(",");
+                    while (i < tickets.length()) {
+                        String ticketName = ticketsInfo[i++];
+                        double ticketStartTime = Double.parseDouble(ticketsInfo[i++]);
+                        double ticketEndTime = Double.parseDouble(ticketsInfo[i++]);
+                        int ticketSeatNumber = Integer.parseInt(ticketsInfo[i++]);
+                        customersDB.addTicket(tripsDB, name, ticketStartTime, ticketEndTime, ticketSeatNumber);
+                    }
+                }
             }
             in.close();
             System.out.println("read file.\n");
@@ -68,7 +81,6 @@ public class CustomersManagement implements FileManagement {
      *
      * @return Boolean
      */
-    @Override
     public boolean writeFile() {
         try {
             Formatter file = new Formatter("Customers.txt");
@@ -81,13 +93,32 @@ public class CustomersManagement implements FileManagement {
                 boolean specialNeeds = tempCustomer.isSpecialNeeds();
                 boolean VIP = tempCustomer.isVIP();
                 double balance = tempCustomer.getBalance();
+
                 if (i + 1 != customersDB.getCustomers().size()) {
-                    file.format("%s%s%s%s%s%s%s%n", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
+                    file.format("%s%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
+                    if (tempCustomer.getTicketsHistory().size() > 0) {
+                        for (int y = 0; y < tempCustomer.getTicketsHistory().size(); y++) {
+                            String ticketName = tempCustomer.getTicketsHistory().get(y).getName();
+                            double ticketStartTime = tempCustomer.getTicketsHistory().get(y).getStartTime();
+                            double ticketEndTime = tempCustomer.getTicketsHistory().get(y).getEndTime();
+                            int ticketSeatNumber = tempCustomer.getTicketsHistory().get(y).getSeatNumber();
+                            file.format("%s%s%s%s", ticketName + ",", ticketStartTime + ",", ticketEndTime + ",", ticketSeatNumber);
+                        }
+                    }
+                    file.format("%n");
                 } else {
                     file.format("%s%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
+                    if (tempCustomer.getTicketsHistory().size() > 0) {
+                        for (int y = 0; y < tempCustomer.getTicketsHistory().size(); y++) {
+                            String ticketName = tempCustomer.getTicketsHistory().get(y).getName();
+                            double ticketStartTime = tempCustomer.getTicketsHistory().get(y).getStartTime();
+                            double ticketEndTime = tempCustomer.getTicketsHistory().get(y).getEndTime();
+                            int ticketSeatNumber = tempCustomer.getTicketsHistory().get(y).getSeatNumber();
+                            file.format("%s%s%s%s", ticketName + ",", ticketStartTime + ",", ticketEndTime + ",", ticketSeatNumber);
+                        }
+                    }
 
                 }
-
             }
             file.close();
             return true;
