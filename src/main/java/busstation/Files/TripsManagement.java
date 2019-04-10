@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package busstation.Files;
 
 import busstation.Database.TripsDB;
@@ -18,7 +17,8 @@ import java.util.Scanner;
  *
  * @author Mostafa Talaat
  */
-public class TripsManagement{
+public class TripsManagement {
+
     private Scanner in;
     private final TripsDB tripsDB;
 
@@ -46,11 +46,13 @@ public class TripsManagement{
                 String name = in.next();
                 String startPos = in.next();
                 String endPos = in.next();
-                String distance = in.next();
-                double duration = in.nextDouble();
+                double starTime = in.nextDouble();
+                double endTime = in.nextDouble();
+                double price = in.nextDouble();
+                double discountPrecent = in.nextDouble();
                 int stopType = in.nextInt();
-                
-                tripsDB.createInternalTrip(name, startPos, endPos, distance, duration, stopType);
+
+                tripsDB.createInternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
             }
             in.close();
             System.out.println("read file.\n");
@@ -70,11 +72,13 @@ public class TripsManagement{
                 String name = in.next();
                 String startPos = in.next();
                 String endPos = in.next();
-                String distance = in.next();
-                double duration = in.nextDouble();
+                double starTime = in.nextDouble();
+                double endTime = in.nextDouble();
+                double price = in.nextDouble();
+                double discountPrecent = in.nextDouble();
                 int stopType = in.nextInt();
-                
-                tripsDB.createExternalTrip(name, startPos, endPos, distance, duration, stopType);
+
+                tripsDB.createExternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
             }
             in.close();
             System.out.println("read file.\n");
@@ -84,7 +88,8 @@ public class TripsManagement{
             return false;
         }
 
-    }    
+    }
+
     /**
      * Write method which saves the database of customers in a predefined file
      * or creates one if it isn't created. It saves the attributes of the class
@@ -100,13 +105,15 @@ public class TripsManagement{
                 String name = tempInternalTrip.getName();
                 String startPos = tempInternalTrip.getStartPos();
                 String endPos = tempInternalTrip.getEndPos();
-                String distance = tempInternalTrip.getDistance();
-                double duration = tempInternalTrip.getDuration();
+                double startTime = tempInternalTrip.getStartTime();
+                double endTime = tempInternalTrip.getEndTime();
+                double price = tempInternalTrip.getPrice();
+                double discountPrecent = tempInternalTrip.getDiscountPrecent();
                 int stopType = tempInternalTrip.getStopType();
                 if (i + 1 != tripsDB.getInternalTrips().size()) {
-                    file.format("%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), distance + (","), duration + (","), stopType);
+                    file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
                 } else {
-                    file.format("%s%s%s%s%s%s", name + (","), startPos + (","), endPos + (","), distance + (","), duration + (","), stopType);
+                    file.format("%s%s%s%s%s%s%s%s", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
 
                 }
 
@@ -119,7 +126,7 @@ public class TripsManagement{
 
     }
 
-        public boolean writeExternalFile() {
+    public boolean writeExternalFile() {
         try {
             Formatter file = new Formatter("ExternalTrips.txt");
             for (int i = 0; i < tripsDB.getExternalTrips().size(); i++) {
@@ -127,13 +134,15 @@ public class TripsManagement{
                 String name = tempExternalTrip.getName();
                 String startPos = tempExternalTrip.getStartPos();
                 String endPos = tempExternalTrip.getEndPos();
-                String distance = tempExternalTrip.getDistance();
-                double duration = tempExternalTrip.getDuration();
+                double startTime = tempExternalTrip.getStartTime();
+                double endTime = tempExternalTrip.getEndTime();
+                double price = tempExternalTrip.getPrice();
+                double discountPrecent = tempExternalTrip.getDiscountPrecent();
                 int stopType = tempExternalTrip.getStopType();
-                if (i + 1 != tripsDB.getExternalTrips().size()) {
-                    file.format("%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), distance + (","), duration + (","), stopType);
+                if (i + 1 != tripsDB.getInternalTrips().size()) {
+                    file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
                 } else {
-                    file.format("%s%s%s%s%s%s", name + (","), startPos + (","), endPos + (","), distance + (","), duration + (","), stopType);
+                    file.format("%s%s%s%s%s%s%s%s", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
 
                 }
 
@@ -145,19 +154,5 @@ public class TripsManagement{
         }
 
     }
-    public static void main(String[] args) {
-        TripsDB tripsDB = new TripsDB();
-        TripsManagement tripsManagement = new TripsManagement(tripsDB);
-        tripsManagement.readInternalFile();
-        tripsManagement.readExternalFile();
-        tripsDB.createInternalTrip("Smouha", "Samsung", "Cleopatra", "500", 12.5, 0);
-        tripsDB.createExternalTrip("Smouha", "Samsung", "Cleopatra", "500", 12.5, 0);
-        InternalTrip test;
-        ExternalTrip test1;
-        tripsManagement.writeInternalFile();
-        tripsManagement.writeExternalFile();
-        test = tripsDB.getTrip();
-        System.out.println(test.getName());
-    }
-}
 
+}
