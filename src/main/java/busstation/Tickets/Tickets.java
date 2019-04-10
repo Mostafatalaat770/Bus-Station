@@ -5,68 +5,42 @@
  */
 package busstation.Tickets;
 
+import busstation.Trips.Trips;
+
 /**
  *
  * @author Mostafa Talaat
  */
-public abstract class Tickets {
+public class Tickets extends Trips {
 
-    private double price;
-    private boolean refundable;
-    private boolean priority;
-    private double discountPrecent;
-    
-    public double calculate(boolean VIP) {
-        if (VIP) {
-            return (price * discountPrecent);
-        }
-        return price;
+    private int seatNumber;
+
+    public Tickets(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, int stopType, int seatNumber) {
+        super(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType);
+        this.seatNumber = seatNumber;
     }
-    public boolean payment(double price){
-        if(price >= this.price)
-        {
-            this.price-=price;
+
+    public double calculate(boolean VIP, double discountPrecent) {
+        if (VIP) {
+            return (getPrice() * discountPrecent);
+        }
+        return getPrice();
+    }
+
+    public boolean payment(double price) {
+        if (price >= getPrice()) {
+            setPrice(getPrice() - price);
             return true;
         }
         return false;
     }
-    public double getPrice() {
-        return price;
+
+    public int getSeatNumber() {
+        return seatNumber;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public boolean isRefundable() {
-        return refundable;
-    }
-
-    public void setRefundable(boolean refundable) {
-        this.refundable = refundable;
-    }
-
-    public boolean isPriority() {
-        return priority;
-    }
-
-    public void setPriority(boolean priority) {
-        this.priority = priority;
-    }
-
-    public double getDiscountPrecent() {
-        return discountPrecent;
-    }
-
-    public void setDiscountPrecent(double discountPrecent) {
-        this.discountPrecent = discountPrecent;
-    }
-
-    public Tickets(double price, boolean refundable, boolean priority, double discountPrecent) {
-        this.price = price;
-        this.refundable = refundable;
-        this.priority = priority;
-        this.discountPrecent = discountPrecent;
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
 
 }
