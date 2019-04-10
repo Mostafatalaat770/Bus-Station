@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+    <children>
+        <AnchorPane layoutX="13.0" layoutY="61.0" prefHeight="200.0" prefWidth="975.0" style="-fx-background-color: #669999;">
+            <children>
+                <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assign a driver to a trip:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text layoutX="439.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
+                <Text layoutX="121.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
+                <JFXComboBox layoutX="176.0" layoutY="85.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
+                <JFXComboBox layoutX="596.0" layoutY="85.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
+                <JFXButton layoutX="907.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="14.0" layoutY="286.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
+            <children>
+                <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete a trip:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip" />
+                <JFXComboBox layoutX="87.0" layoutY="55.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
+                <Text layoutX="368.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="will be deleted" />
+                <JFXButton layoutX="411.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
+            </children>
+        </AnchorPane>
+        <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome //name comes here">
+            <font>
+                <Font size="18.0" />
+            </font></Text>
+        <JFXButton layoutX="885.0" layoutY="22.0" style="-fx-background-color: #669999;" text="Log out" />
+        <AnchorPane layoutX="510.0" layoutY="286.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
+            <children>
+                <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Review a trip:">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <JFXComboBox layoutX="135.0" layoutY="12.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
+                <JFXButton layoutX="409.0" layoutY="12.0" style="-fx-background-color: #226666;" text="Load" />
+                <VBox layoutX="13.0" layoutY="56.0" prefHeight="137.0" prefWidth="450.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" wrappingWidth="449.609375" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip driver's name:" wrappingWidth="449.609375" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's destination:" wrappingWidth="449.609375" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" wrappingWidth="449.609375" />
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <JFXButton layoutX="742.0" layoutY="22.0" style="-fx-background-color: #669999;" text="Mange account" />
+    </children>
+</AnchorPane>

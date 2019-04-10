@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;">
+         <children>
+            <AnchorPane layoutX="604.0" prefHeight="500.0" prefWidth="396.0" style="-fx-background-color: #669999;">
+               <children>
+                  <JFXButton fx:id="driverButton" layoutX="65.0" layoutY="215.0" onAction="#handleDriverButtonClick" prefHeight="31.0" prefWidth="267.0" style="-fx-background-color: #226666;" text="Driver">
+                     <font>
+                        <Font name="Calibri" size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="customerButton" layoutX="65.0" layoutY="314.0" onAction="#handleCustomerButtonClick" prefHeight="31.0" prefWidth="267.0" style="-fx-background-color: #226666;" text="Customer">
+                     <font>
+                        <Font name="Calibri" size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="mangerButton" layoutX="65.0" layoutY="108.0" onAction="#handleMangerButtonClick" prefHeight="31.0" prefWidth="267.0" style="-fx-background-color: #226666;" text="Manger">
+                     <font>
+                        <Font name="Calibri" size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <Text layoutX="65.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="And who might you be?" textAlignment="CENTER" wrappingWidth="267.0">
+                     <font>
+                        <Font name="Calibri Light" size="21.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="65.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account? Sign up:" />
+                  <JFXButton layoutX="65.0" layoutY="419.0" onAction="#handleSignUpButtonClick" style="-fx-background-color: #226666;" text="Sign up" />
+               </children>
+            </AnchorPane>
+            <Text layoutX="106.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to SwiSta BusStation" textAlignment="CENTER" wrappingWidth="376.0">
+               <font>
+                  <Font name="Calibri Bold" size="42.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+
+</VBox>
