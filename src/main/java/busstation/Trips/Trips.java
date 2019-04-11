@@ -18,16 +18,16 @@ public abstract class Trips {
     private double endTime;
     private double price;
     private double discountPrecent;
-    private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
+    private String stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
-    public Trips(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, int stopType) {
+    public Trips(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, String stopType) {
         this.name = name;
         this.startPos = startPos;
         this.endPos = endPos;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
-        this.discountPrecent = discountPrecent;
+        this.discountPrecent = 1 - (discountPrecent / 100);
         this.stopType = stopType;
     }
 
@@ -87,11 +87,11 @@ public abstract class Trips {
         this.discountPrecent = discountPrecent;
     }
 
-    public int getStopType() {
+    public String getStopType() {
         return stopType;
     }
 
-    public void setStopType(int stopType) {
+    public void setStopType(String stopType) {
         this.stopType = stopType;
     }
 
