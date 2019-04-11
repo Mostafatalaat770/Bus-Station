@@ -50,7 +50,7 @@ public class TripsManagement {
                 double endTime = in.nextDouble();
                 double price = in.nextDouble();
                 double discountPrecent = in.nextDouble();
-                int stopType = in.nextInt();
+                String stopType = in.next();
 
                 tripsDB.createInternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
             }
@@ -76,8 +76,7 @@ public class TripsManagement {
                 double endTime = in.nextDouble();
                 double price = in.nextDouble();
                 double discountPrecent = in.nextDouble();
-                int stopType = in.nextInt();
-
+                String stopType = in.next();
                 tripsDB.createExternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
             }
             in.close();
@@ -109,7 +108,7 @@ public class TripsManagement {
                 double endTime = tempInternalTrip.getEndTime();
                 double price = tempInternalTrip.getPrice();
                 double discountPrecent = tempInternalTrip.getDiscountPrecent();
-                int stopType = tempInternalTrip.getStopType();
+                String stopType = tempInternalTrip.getStopType();
                 if (i + 1 != tripsDB.getInternalTrips().size()) {
                     file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
                 } else {
@@ -138,8 +137,8 @@ public class TripsManagement {
                 double endTime = tempExternalTrip.getEndTime();
                 double price = tempExternalTrip.getPrice();
                 double discountPrecent = tempExternalTrip.getDiscountPrecent();
-                int stopType = tempExternalTrip.getStopType();
-                if (i + 1 != tripsDB.getInternalTrips().size()) {
+                String stopType = tempExternalTrip.getStopType();
+                if (i + 1 != tripsDB.getExternalTrips().size()) {
                     file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
                 } else {
                     file.format("%s%s%s%s%s%s%s%s", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
@@ -154,5 +153,4 @@ public class TripsManagement {
         }
 
     }
-
 }
