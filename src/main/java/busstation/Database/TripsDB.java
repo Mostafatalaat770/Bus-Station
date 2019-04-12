@@ -17,13 +17,17 @@ public class TripsDB {
 
     ArrayList<InternalTrip> internalTripsDB = new ArrayList<>();
     ArrayList<ExternalTrip> externalTripsDB = new ArrayList<>();
+    ArrayList<String> internalTripsName=new ArrayList<>();
+    ArrayList<String> externalTripsName=new ArrayList<>();
 
     public boolean createInternalTrip(String name, String startPos, String endPos, String starTime, String endTime, String price, String discountPrecent, String stopType) {
+        internalTripsName.add(name);
         internalTripsDB.add(new InternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType));
         return true;
     }
 
     public boolean createExternalTrip(String name, String startPos, String endPos, String starTime, String endTime, String price, String discountPrecent, String stopType) {
+        externalTripsName.add(name);
         externalTripsDB.add(new ExternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType));
         return true;
     }
@@ -34,5 +38,13 @@ public class TripsDB {
 
     public ArrayList<ExternalTrip> getExternalTrips() {
         return externalTripsDB;
+    }
+
+    public ArrayList<String> getInternalTripsName() {
+        return internalTripsName;
+    }
+
+    public ArrayList<String> getExternalTripsName() {
+        return externalTripsName;
     }
 }

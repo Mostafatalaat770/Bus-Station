@@ -14,7 +14,7 @@
          <children>
             <Text layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a trip to join:" wrappingWidth="145.6708984375" />
             <JFXComboBox layoutX="171.0" layoutY="42.0" prefHeight="31.0" prefWidth="170.0" promptText="Trips" />
-            <JFXTextField layoutX="171.0" layoutY="106.0" maxWidth="170.0" minWidth="170.0" prefHeight="37.0" prefWidth="170.0" promptText="balance" />
+            <JFXTextField fx:id="balanceTextField" layoutX="171.0" layoutY="106.0" maxWidth="170.0" minWidth="170.0" prefHeight="37.0" prefWidth="170.0" promptText="balance" />
             <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add balance:" />
             <JFXComboBox layoutX="171.0" layoutY="170.0" prefHeight="31.0" prefWidth="170.0" promptText="Trips" />
             <Text layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Review booked trips:" />
@@ -27,8 +27,9 @@
                </children>
             </VBox>
             <JFXButton layoutX="396.0" layoutY="42.0" style="-fx-background-color: #226666;" text="save" />
-            <JFXButton layoutX="398.0" layoutY="110.0" style="-fx-background-color: #226666;" text="add" />
+            <JFXButton layoutX="398.0" layoutY="110.0" onAction="#handleAddBalanceButtonClick" style="-fx-background-color: #226666;" text="add" />
             <JFXButton layoutX="389.0" layoutY="181.0" style="-fx-background-color: #226666;" text="review" />
+            <Text fx:id="balanceText" layoutX="542.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
       <Text layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome user">

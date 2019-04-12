@@ -18,7 +18,7 @@ public class Manager extends Employees {
 
     public void removeTrip(InternalTrip trip, TripsDB tripsDB, CustomersDB customerDB) {
         tripsDB.getInternalTrips().remove(trip);
-        for (int i = 0; i < customerDB.getCustomers().size(); i++) {
+        for (int i = 0; i < customerDB.getCustomers().size() && customerDB.getCustomers().get(i).ticketsHistory.size()>0; i++) {
             String name = trip.getName();
             String startTime = trip.getStartTime();
             String endTime = trip.getEndTime();
@@ -34,7 +34,7 @@ public class Manager extends Employees {
 
     public void removeTrip(ExternalTrip trip, TripsDB tripsDB, CustomersDB customerDB) {
         tripsDB.getExternalTrips().remove(trip);
-        for (int i = 0; i < customerDB.getCustomers().size(); i++) {
+        for (int i = 0; i < customerDB.getCustomers().size() && customerDB.getCustomers().get(i).ticketsHistory.size()>0; i++) {
             String name = trip.getName();
             String startTime = trip.getStartTime();
             String endTime = trip.getEndTime();

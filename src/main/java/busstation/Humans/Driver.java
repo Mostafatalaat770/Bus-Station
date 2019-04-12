@@ -7,19 +7,9 @@ package busstation.Humans;
 
 public class Driver extends Employees {
 
-    private boolean working;
-
-    public Driver(String username, String password, String name, int age, String address, boolean working) {
+    public Driver(String username, String password, String name, int age, String address) {
         super(username, password, name, age, address);
-        this.working = working;
     }
 
-    public boolean isWorking() {
-        return working;
-    }
-
-    public void setWorking(boolean working) {
-        this.working = working;
-    }
 
 }

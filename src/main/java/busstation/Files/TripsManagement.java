@@ -41,6 +41,7 @@ public class TripsManagement {
     public boolean readInternalFile() {
         try {
             tripsDB.getInternalTrips().clear();
+            tripsDB.getInternalTrips().clear();
             in = new Scanner(new File("InternalTrips.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
@@ -68,6 +69,7 @@ public class TripsManagement {
     public boolean readExternalFile() {
         try {
             tripsDB.getExternalTrips().clear();
+            tripsDB.getExternalTripsName().clear();
             in = new Scanner(new File("ExternalTrips.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {

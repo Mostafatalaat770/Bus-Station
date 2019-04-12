@@ -40,16 +40,15 @@ public class DriversManagement implements FileManagement {
     public boolean readFile() {
         try {
             driversDB.getDrivers().clear();
+            driversDB.getDriversUsernames().clear();
             in = new Scanner(new File("Drivers.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
                 String username = in.next();
                 String password = in.next();
                 String name = in.next();
-                int age = Integer.parseInt(in.next());
                 String address = in.next();
-                boolean working = in.nextBoolean();
-                driversDB.createAccount(username, password, name, age, address, working);
+                driversDB.createAccount(username, password, name, address);
             }
             in.close();
             System.out.println("read file.\n");
@@ -77,13 +76,11 @@ public class DriversManagement implements FileManagement {
                 String username = tempDriver.getUsername();
                 String password = tempDriver.getPassword();
                 String name = tempDriver.getName();
-                int age = tempDriver.getAge();
                 String address = tempDriver.getAddress();
-                boolean working = tempDriver.isWorking();
                 if (i + 1 != driversDB.getDrivers().size()) {
-                    file.format("%s%s%s%s%s%s%n", username + (","), password + (","), name + (","), age + (","), address + (","), working );
+                    file.format("%s%s%s%s%n", username + (","), password + (","), name + (","), address);
                 } else {
-                    file.format("%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), address + (","), working );
+                    file.format("%s%s%s%s", username + (","), password + (","), name + (","), address);
 
                 }
 

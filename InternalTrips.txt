@@ -1,0 +1,2 @@
+3,3,3,3,3,3,3,multi stop trip
+smouha-sporting,smouha,sporting,5,10,50,30,no stop trip

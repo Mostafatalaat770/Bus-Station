@@ -17,11 +17,13 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text layoutX="446.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
-                <Text layoutX="108.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
-                <JFXComboBox fx:id="driversComboBox" layoutX="170.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
-                <JFXComboBox layoutX="610.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
-                <JFXButton layoutX="907.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
+                <Text layoutX="389.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
+                <Text layoutX="68.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
+                <JFXComboBox fx:id="driversComboBox" layoutX="120.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
+                <JFXComboBox fx:id="internalTripsComboBox" layoutX="535.0" layoutY="64.0" prefHeight="31.0" prefWidth="258.0" promptText="Intenal trips" />
+                <JFXButton layoutX="827.0" layoutY="64.0" onAction="#handleAssignDriverButtonClick" style="-fx-background-color: #226666;" text="Save" />
+            <JFXComboBox fx:id="externalTripsComboBox" layoutX="535.0" layoutY="111.0" prefHeight="31.0" prefWidth="258.0" promptText="External trips" />
+            <JFXButton layoutX="827.0" layoutY="106.0" onAction="#handleAssignDriverButtonClick1" style="-fx-background-color: #226666;" text="Save" />
             </children>
         </AnchorPane>
         <AnchorPane layoutX="14.0" layoutY="286.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
@@ -31,10 +33,12 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip" />
-                <JFXComboBox layoutX="87.0" layoutY="55.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
-                <Text layoutX="368.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="will be deleted" />
-                <JFXButton layoutX="411.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
+                <Text layoutX="14.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip" />
+                <JFXComboBox fx:id="internalTripsComboBox2" layoutX="65.0" layoutY="55.0" prefHeight="31.0" prefWidth="116.0" promptText="Internal" />
+                <Text layoutX="200.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="will be deleted" />
+                <JFXButton layoutX="319.0" layoutY="55.0" onAction="#handleDeleteTripMangerButtonClick" style="-fx-background-color: #226666;" text="Save" />
+            <JFXComboBox fx:id="externalTripsComboBox2" layoutX="65.0" layoutY="121.0" prefHeight="31.0" prefWidth="116.0" promptText="External" />
+            <JFXButton layoutX="319.0" layoutY="121.0" onAction="#handleDeleteTripMangerButtonClick2" style="-fx-background-color: #226666;" text="Save" />
             </children>
         </AnchorPane>
         <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome boss">
@@ -49,16 +53,26 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <JFXComboBox layoutX="135.0" layoutY="12.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
-                <JFXButton layoutX="409.0" layoutY="12.0" style="-fx-background-color: #226666;" text="Load" />
-                <VBox layoutX="13.0" layoutY="56.0" prefHeight="137.0" prefWidth="450.0">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" wrappingWidth="449.609375" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip driver's name:" wrappingWidth="449.609375" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's destination:" wrappingWidth="449.609375" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" wrappingWidth="449.609375" />
-                    </children>
-                </VBox>
+                <JFXButton layoutX="171.0" layoutY="53.0" onAction="#handleShowTripMangerButtonClick" style="-fx-background-color: #226666;" text="Load" />
+            <VBox layoutX="17.0" layoutY="91.0" prefHeight="103.0" prefWidth="207.0">
+               <children>
+                  <Text fx:id="tripNameTextField" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+                  <Text fx:id="tripDestinationTextField" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" />
+                  <Text fx:id="tripPriceTextField" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                  <Text fx:id="tripDiscountTextField" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount:" />
+               </children>
+            </VBox>
+            <VBox layoutX="255.0" layoutY="91.0" prefHeight="103.0" prefWidth="207.0">
+               <children>
+                  <Text fx:id="tripNameTextField2" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+                  <Text fx:id="tripDestinationTextField2" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination:" />
+                  <Text fx:id="tripPriceTextField2" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                  <Text fx:id="tripDiscountTextField2" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount:" />
+               </children>
+            </VBox>
+            <JFXComboBox fx:id="internalTripsComboBox3" layoutX="17.0" layoutY="53.0" prefHeight="31.0" prefWidth="116.0" promptText="Internal" />
+            <JFXComboBox fx:id="externalTripsComboBox3" layoutX="255.0" layoutY="53.0" prefHeight="31.0" prefWidth="116.0" promptText="External" />
+            <JFXButton layoutX="409.0" layoutY="53.0" onAction="#handleShowTripMangerButtonClick2" style="-fx-background-color: #226666;" text="Load" />
             </children>
         </AnchorPane>
         <JFXButton layoutX="736.0" layoutY="22.0" onAction="#handleChangePasswordButtonClick" style="-fx-background-color: #669999;" text="Change password" />

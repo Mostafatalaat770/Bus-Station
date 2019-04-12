@@ -15,24 +15,24 @@
             <VBox layoutX="14.0" layoutY="15.0" prefHeight="403.0" prefWidth="283.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" />
-                  <JFXTextField promptText="name" />
+                  <JFXTextField fx:id="nameTextField" promptText="name" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start position:" />
-                  <JFXTextField promptText="location" />
+                  <JFXTextField fx:id="startLocationTextField" promptText="location" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="trip's destination:" />
-                  <JFXTextField promptText="location" />
+                  <JFXTextField fx:id="endLocationTextField" promptText="location" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start time:" />
-                  <JFXTextField promptText="time" />
+                  <JFXTextField fx:id="startTimeTextField" promptText="time" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" />
-                  <JFXTextField promptText="in Egyptian pounds" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End time:" />
-                  <JFXTextField promptText="time" />
+                  <JFXTextField fx:id="priceTextField" promptText="in Egyptian pounds" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Discount percent (for VIP customers):" />
-                  <JFXTextField promptText="precentage" />
+                  <JFXTextField fx:id="discountTextField" promptText="precentage" />
                </children>
             </VBox>
-            <Text layoutX="488.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's type:" />
-            <JFXButton layoutX="863.0" layoutY="377.0" style="-fx-background-color: #226666;" text="Save trip" />
-            <JFXComboBox layoutX="488.0" layoutY="51.0" prefHeight="31.0" prefWidth="246.0" promptText="Trip's type" />
+            <Text layoutX="488.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's type:" />
+            <JFXButton layoutX="863.0" layoutY="377.0" onAction="#handlesaveTripButtonClick" style="-fx-background-color: #226666;" text="Save trip" />
+            <JFXComboBox fx:id="tripTypeComboBox" layoutX="488.0" layoutY="168.0" prefHeight="31.0" prefWidth="246.0" promptText="Trip's type" />
+            <JFXToggleButton fx:id="externalTripToggleButton" layoutX="484.0" layoutY="22.0" text="External trip" />
+            <Text layoutX="488.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="It's internal by default" />
          </children>
       </AnchorPane>
       <Text layoutX="25.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Trip">

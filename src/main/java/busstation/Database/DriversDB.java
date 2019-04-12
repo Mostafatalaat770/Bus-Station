@@ -20,14 +20,12 @@ public class DriversDB {
      * @param username
      * @param password
      * @param name
-     * @param age
      * @param address
-     * @param working
      * @return Boolean
      */
-    public boolean createAccount(String username, String password, String name, int age, String address, boolean working) {
+    public boolean createAccount(String username, String password, String name, String address) {
         if (validateUsername(username)) {
-            driversDB.add(new Driver(username, password, name, age, address, working));
+            driversDB.add(new Driver(username, password, name,0, address));
             driversUsernames.add(username);
             return true;
         }
