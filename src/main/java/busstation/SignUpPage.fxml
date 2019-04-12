@@ -33,5 +33,6 @@
       <JFXToggleButton fx:id="signUpVIPToggleButton" layoutX="707.0" layoutY="120.0" text="VIP" />
       <Text layoutX="707.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't forget to save your account:" />
       <JFXButton layoutX="707.0" layoutY="416.0" onAction="#handleSubmitSignUpButtonClick" style="-fx-background-color: #226666;" text="Submit" />
+      <Text fx:id="errorText" layoutX="252.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>

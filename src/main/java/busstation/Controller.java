@@ -56,6 +56,10 @@ public class Controller {
     /*
 
     */
+    @FXML private Text errorText;//shows all the errors in authentication, sign up, etc..
+    /*
+
+    */
     //at the sample page===============================================================
     @FXML private void handleMangerButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=1;
@@ -100,17 +104,16 @@ public class Controller {
     */
     //to create a new customer==============================================================
     @FXML private void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
-        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)) {
-
+        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)!=null) {
             Parent LoginScreen = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene Loginscene = new Scene(LoginScreen);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(Loginscene);
             window.show();
         }
-        else
-            System.out.println("username already used ");
-
+        else {
+            errorText.setText("username already used");
+        }
     }
     //======================================================================================
     /*
@@ -129,7 +132,7 @@ public class Controller {
                 window.setScene(Loginscene);
                 window.show();}
                 else
-                    System.out.println("wrong password");
+                    errorText.setText("wrong username or password");
                 break;
             case 2://driver
                 driver = driversDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
@@ -141,7 +144,7 @@ public class Controller {
                     window.show();
                 }
                 else
-                    System.out.println("wrong password");
+                    errorText.setText("wrong username or password");
                 break;
             case 3://customer
                 customer = customersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
@@ -154,7 +157,7 @@ public class Controller {
                     window.show();
                 }
                 else
-                    System.out.println("a7a");
+                    errorText.setText("wrong username or password");
                 break;
 
         }
@@ -235,7 +238,7 @@ public class Controller {
             window.show();
         }
         else
-            System.out.println("username already used ");
+            errorText.setText("username already used");
 
     }
     //=====================================================================================

@@ -21,6 +21,7 @@
             <JFXTextField fx:id="signUpPasswordTextField" layoutX="14.0" layoutY="342.0" promptText="password" />
             <Text layoutX="14.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee's password:" />
             <JFXButton layoutX="838.0" layoutY="364.0" onAction="#handleHireDriverButtonClick" style="-fx-background-color: #226666;" text="Hire captin" />
+            <Text fx:id="errorText" layoutX="264.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
       <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's welcome our new employee">
