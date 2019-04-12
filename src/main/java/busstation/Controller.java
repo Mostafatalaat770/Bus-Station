@@ -5,6 +5,10 @@ import busstation.Database.DriversDB;
 import busstation.Database.ManagersDB;
 import busstation.Database.TripsDB;
 import busstation.Files.CustomersManagement;
+import busstation.Files.DriversManagement;
+import busstation.Files.ManagersManagement;
+import busstation.Files.TicketsManagement;
+import busstation.Files.TripsManagement;
 import busstation.Humans.Customer;
 import busstation.Humans.Driver;
 import busstation.Humans.Manager;
@@ -29,6 +33,10 @@ public class Controller {
     private static ManagersDB managersDB = new ManagersDB();
     private static DriversDB driversDB = new DriversDB();
     private static  TripsDB tripsDB = new TripsDB();
+    private static CustomersManagement customersManagement = new CustomersManagement(customersDB);
+    private static DriversManagement driversManagement = new DriversManagement(driversDB);
+    private static ManagersManagement managersManagement = new ManagersManagement(managersDB);
+    private static TripsManagement tripsManagement = new TripsManagement(tripsDB);
     //=================================================================================
     /*
 
@@ -113,7 +121,7 @@ public class Controller {
             window.show();
         }
         else {
-            errorText.setText("username already used");
+            errorText.setText("Username already exists!");
         }
     }
     //======================================================================================
@@ -133,7 +141,7 @@ public class Controller {
                 window.setScene(Loginscene);
                 window.show();}
                 else
-                    errorText.setText("wrong username or password");
+                    errorText.setText("Wrong username or password!");
                 break;
             case 2://driver
                 driver = driversDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
@@ -145,7 +153,7 @@ public class Controller {
                     window.show();
                 }
                 else
-                    errorText.setText("wrong username or password");
+                    errorText.setText("Wrong username or password!");
                 break;
             case 3://customer
                 customer = customersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
@@ -158,7 +166,7 @@ public class Controller {
                     window.show();
                 }
                 else
-                    errorText.setText("wrong username or password");
+                    errorText.setText("Wrong username or password!");
                 break;
 
         }
@@ -239,7 +247,7 @@ public class Controller {
             window.show();
         }
         else
-            errorText.setText("username already used");
+            errorText.setText("Username already exists!");
 
     }
     //=====================================================================================
