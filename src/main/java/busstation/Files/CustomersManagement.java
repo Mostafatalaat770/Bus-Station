@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class CustomersManagement {
 
-    private Scanner in;
     private final CustomersDB customersDB;
+    private final TicketsManagement ticketsManagement = new TicketsManagement();
 
     /**
      * Takes the object of the database of customers so we can do operations on
@@ -32,39 +32,31 @@ public class CustomersManagement {
     }
 
     /**
-     * Read method which reads a predefined file and splits it in-order to get
-     * our parameters from it.The parameters are comma separated.
+     * Read method which reads a predefined file and splits it
+     * inputScanner-order to get our parameters from it.The parameters are comma
+     * separated.
      *
      * @param tripsDB
      * @return Boolean
      */
     public boolean readFile(TripsDB tripsDB) {
         try {
-            in = new Scanner(new File("Customers.txt"));
-            in.useDelimiter(",|\\n");
-            while (in.hasNextLine()) {
-                int i = 0;
-                String username = in.next();
-                String password = in.next();
-                String name = in.next();
-                int age = Integer.parseInt(in.next());
-                boolean specialNeeds = Boolean.parseBoolean(in.next());
-                boolean VIP = Boolean.parseBoolean(in.next());
-                double balance = Double.parseDouble(in.next());
-                customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
-                if (in.hasNext("*")) {
-                    String tickets = in.nextLine();
-                    String[] ticketsInfo = tickets.split(",");
-                    while (i < tickets.length()) {
-                        String ticketName = ticketsInfo[i++];
-                        double ticketStartTime = Double.parseDouble(ticketsInfo[i++]);
-                        double ticketEndTime = Double.parseDouble(ticketsInfo[i++]);
-                        int ticketSeatNumber = Integer.parseInt(ticketsInfo[i++]);
-                        customersDB.addTicket(tripsDB, name, ticketStartTime, ticketEndTime, ticketSeatNumber);
-                    }
-                }
+            customersDB.getCustomers().clear();
+            Scanner inputScanner1 = new Scanner(new File("Customers.txt"));
+            inputScanner1.useDelimiter(",|\\n");
+            while (inputScanner1.hasNextLine()) {
+
+                String username = inputScanner1.next();
+                String password = inputScanner1.next();
+                String name = inputScanner1.next();
+                int age = Integer.parseInt(inputScanner1.next());
+                boolean specialNeeds = Boolean.parseBoolean(inputScanner1.next());
+                boolean VIP = Boolean.parseBoolean(inputScanner1.next());
+                double balance = Double.parseDouble(inputScanner1.next());
+                Customer temp = customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
+                ticketsManagement.readFile(temp, customersDB, tripsDB);
             }
-            in.close();
+
             System.out.println("read file.\n");
             return true;
         } catch (FileNotFoundException ex) {
@@ -76,12 +68,13 @@ public class CustomersManagement {
 
     /**
      * Write method which saves the database of customers in a predefined file
-     * or creates one if it isn't created. It saves the attributes of the class
+     * or creates one if it isn't created.It saves the attributes of the class
      * comma separated.
      *
      * @return Boolean
+     * @throws java.io.IOException
      */
-    public boolean writeFile() {
+    public boolean writeFile() throws IOException {
         try {
             Formatter file = new Formatter("Customers.txt");
             for (int i = 0; i < customersDB.getCustomers().size(); i++) {
@@ -93,33 +86,18 @@ public class CustomersManagement {
                 boolean specialNeeds = tempCustomer.isSpecialNeeds();
                 boolean VIP = tempCustomer.isVIP();
                 double balance = tempCustomer.getBalance();
-
+                if (tempCustomer.getTicketsHistory().size() > 0) {
+                    ticketsManagement.writeFile(tempCustomer);
+                }
                 if (i + 1 != customersDB.getCustomers().size()) {
-                    file.format("%s%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
-                    if (tempCustomer.getTicketsHistory().size() > 0) {
-                        for (int y = 0; y < tempCustomer.getTicketsHistory().size(); y++) {
-                            String ticketName = tempCustomer.getTicketsHistory().get(y).getName();
-                            double ticketStartTime = tempCustomer.getTicketsHistory().get(y).getStartTime();
-                            double ticketEndTime = tempCustomer.getTicketsHistory().get(y).getEndTime();
-                            int ticketSeatNumber = tempCustomer.getTicketsHistory().get(y).getSeatNumber();
-                            file.format("%s%s%s%s", ticketName + ",", ticketStartTime + ",", ticketEndTime + ",", ticketSeatNumber);
-                        }
-                    }
-                    file.format("%n");
+                    file.format("%s%s%s%s%s%s%s%n", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
+
                 } else {
                     file.format("%s%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
-                    if (tempCustomer.getTicketsHistory().size() > 0) {
-                        for (int y = 0; y < tempCustomer.getTicketsHistory().size(); y++) {
-                            String ticketName = tempCustomer.getTicketsHistory().get(y).getName();
-                            double ticketStartTime = tempCustomer.getTicketsHistory().get(y).getStartTime();
-                            double ticketEndTime = tempCustomer.getTicketsHistory().get(y).getEndTime();
-                            int ticketSeatNumber = tempCustomer.getTicketsHistory().get(y).getSeatNumber();
-                            file.format("%s%s%s%s", ticketName + ",", ticketStartTime + ",", ticketEndTime + ",", ticketSeatNumber);
-                        }
-                    }
-
                 }
+
             }
+
             file.close();
             return true;
         } catch (FileNotFoundException ex) {
@@ -127,4 +105,5 @@ public class CustomersManagement {
         }
 
     }
+
 }

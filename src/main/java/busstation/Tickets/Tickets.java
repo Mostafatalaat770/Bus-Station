@@ -13,9 +13,9 @@ import busstation.Trips.Trips;
  */
 public class Tickets extends Trips {
 
-    private int seatNumber;
+    private String seatNumber;
 
-    public Tickets(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, int stopType, int seatNumber) {
+    public Tickets(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, String stopType, String seatNumber) {
         super(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType);
         this.seatNumber = seatNumber;
     }
@@ -35,11 +35,11 @@ public class Tickets extends Trips {
         return false;
     }
 
-    public int getSeatNumber() {
+    public String getSeatNumber() {
         return seatNumber;
     }
 
-    public void setSeatNumber(int seatNumber) {
+    public void setSeatNumber(String seatNumber) {
         this.seatNumber = seatNumber;
     }
 

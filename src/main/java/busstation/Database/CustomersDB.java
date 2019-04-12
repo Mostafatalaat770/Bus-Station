@@ -26,12 +26,12 @@ public class CustomersDB {
      * @param balance
      * @return Boolean
      */
-    public boolean createAccount(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, double balance) {
+    public Customer createAccount(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, double balance) {
         if (validateUsername(username)) {
             customerDB.add(new Customer(username, password, name, age, specialNeeds, VIP, balance));
-            return true;
+            return customerDB.get(customerDB.size() - 1);
         }
-        return false;
+        return null;
     }
 
     /**
@@ -92,7 +92,7 @@ public class CustomersDB {
         return customerDB;
     }
 
-    public void addTicket(TripsDB tripsDB, String name, double startTime, double endTime, int seatNumber) {
+    public void addTicket(Customer customer, TripsDB tripsDB, String name, double startTime, double endTime, String seatNumber) {
         for (int i = 0; i < tripsDB.getExternalTrips().size(); i++) {
             String name1 = tripsDB.getExternalTrips().get(i).getName();
             double startTime1 = tripsDB.getExternalTrips().get(i).getStartTime();
@@ -102,8 +102,8 @@ public class CustomersDB {
                 String endPos = tripsDB.getExternalTrips().get(i).getEndPos();
                 double price = tripsDB.getExternalTrips().get(i).getPrice();
                 double discountPrecent = tripsDB.getExternalTrips().get(i).getDiscountPrecent();
-                int stopType = tripsDB.getExternalTrips().get(i).getStopType();
-                customerDB.get(getCustomers().size()-1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
+                String stopType = tripsDB.getExternalTrips().get(i).getStopType();
+                customer.getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
                 return;
             }
         }
@@ -116,8 +116,8 @@ public class CustomersDB {
                 String endPos = tripsDB.getInternalTrips().get(i).getEndPos();
                 double price = tripsDB.getInternalTrips().get(i).getPrice();
                 double discountPrecent = tripsDB.getInternalTrips().get(i).getDiscountPrecent();
-                int stopType = tripsDB.getInternalTrips().get(i).getStopType();
-                customerDB.get(getCustomers().size()-1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
+                String stopType = tripsDB.getInternalTrips().get(i).getStopType();
+                customerDB.get(getCustomers().size() - 1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
                 return;
             }
         }

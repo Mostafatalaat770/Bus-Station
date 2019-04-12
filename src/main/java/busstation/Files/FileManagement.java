@@ -5,11 +5,9 @@
  */
 package busstation.Files;
 
-import java.io.File;
-
 /**
  *
- * @author DELL
+ * @author Mostafa Talaat
  */
 public interface FileManagement {
 
