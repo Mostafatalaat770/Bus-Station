@@ -52,7 +52,7 @@ public class CustomersManagement {
                 int age = Integer.parseInt(inputScanner1.next());
                 boolean specialNeeds = Boolean.parseBoolean(inputScanner1.next());
                 boolean VIP = Boolean.parseBoolean(inputScanner1.next());
-                double balance = Double.parseDouble(inputScanner1.next());
+                String balance = (inputScanner1.next());
                 Customer temp = customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
                 ticketsManagement.readFile(temp, customersDB, tripsDB);
             }
@@ -85,7 +85,7 @@ public class CustomersManagement {
                 int age = tempCustomer.getAge();
                 boolean specialNeeds = tempCustomer.isSpecialNeeds();
                 boolean VIP = tempCustomer.isVIP();
-                double balance = tempCustomer.getBalance();
+                String balance = tempCustomer.getBalance();
                 if (tempCustomer.getTicketsHistory().size() > 0) {
                     ticketsManagement.writeFile(tempCustomer);
                 }
@@ -105,5 +105,17 @@ public class CustomersManagement {
         }
 
     }
+    public static void main(String[] args) throws IOException {
+        CustomersDB customersDB1 = new CustomersDB();
+        TripsDB tripsDB = new TripsDB();
+        CustomersManagement customersManagement = new CustomersManagement(customersDB1);
+        customersDB1.createAccount("1", "2", "3", 0, true, true, "0");
+        Customer c = customersDB1.authenticate("1", "2");
+        System.out.println(c.getName());
+        customersManagement.writeFile();
+        customersManagement.readFile(tripsDB);
+        c = customersDB1.authenticate("1", "2");
+        System.out.println(c.getName());
+    }
+    }
 
-}

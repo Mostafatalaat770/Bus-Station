@@ -14,20 +14,20 @@ public abstract class Trips {
     private String name;
     private String startPos;
     private String endPos;
-    private double startTime;
-    private double endTime;
-    private double price;
-    private double discountPrecent;
+    private String startTime;
+    private String endTime;
+    private String price;
+    private String discountPrecent;
     private String stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
-    public Trips(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, String stopType) {
+    public Trips(String name, String startPos, String endPos, String startTime, String endTime, String price, String discountPrecent, String stopType) {
         this.name = name;
         this.startPos = startPos;
         this.endPos = endPos;
         this.startTime = startTime;
         this.endTime = endTime;
         this.price = price;
-        this.discountPrecent = 1 - (discountPrecent / 100);
+        this.discountPrecent = discountPrecent;
         this.stopType = stopType;
     }
 
@@ -55,35 +55,35 @@ public abstract class Trips {
         this.endPos = endPos;
     }
 
-    public double getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(double startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public double getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(double endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public double getDiscountPrecent() {
+    public String getDiscountPrecent() {
         return discountPrecent;
     }
 
-    public void setDiscountPrecent(double discountPrecent) {
+    public void setDiscountPrecent(String discountPrecent) {
         this.discountPrecent = discountPrecent;
     }
 

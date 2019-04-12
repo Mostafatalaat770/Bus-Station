@@ -15,21 +15,22 @@ public class Tickets extends Trips {
 
     private String seatNumber;
 
-    public Tickets(String name, String startPos, String endPos, double startTime, double endTime, double price, double discountPrecent, String stopType, String seatNumber) {
+    public Tickets(String name, String startPos, String endPos, String startTime, String endTime, String price, String discountPrecent, String stopType, String seatNumber) {
         super(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType);
         this.seatNumber = seatNumber;
     }
 
-    public double calculate(boolean VIP, double discountPrecent) {
+    public String calculate(boolean VIP, String discountPrecent) {
         if (VIP) {
-            return (getPrice() * discountPrecent);
+            double x=Double.parseDouble(getPrice()) * (1-Double.parseDouble(discountPrecent)/100);
+            return (Double.toString(x));
         }
         return getPrice();
     }
 
     public boolean payment(double price) {
-        if (price >= getPrice()) {
-            setPrice(getPrice() - price);
+        if ((price) >= Double.parseDouble(getPrice())) {
+            setPrice(Double.toString(Double.parseDouble(getPrice()) - price));
             return true;
         }
         return false;

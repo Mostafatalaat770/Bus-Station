@@ -29,8 +29,8 @@ public class TicketsManagement {
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
                 String name = in.next();
-                double startTime = in.nextDouble();
-                double endTime = in.nextDouble();
+                String startTime = in.next();
+                String endTime = in.next();
                 String seatNumber = in.next();
                 customersDB.addTicket(customer, tripsDB, name, startTime, endTime, seatNumber);
             }
@@ -48,8 +48,8 @@ public class TicketsManagement {
             Formatter file = new Formatter(f);
             for (int i = 0; i < customer.getTicketsHistory().size(); i++) {
                 String name = customer.getTicketsHistory().get(i).getName();
-                double startTime = customer.getTicketsHistory().get(i).getStartTime();
-                double endTime = customer.getTicketsHistory().get(i).getEndTime();
+                String startTime = customer.getTicketsHistory().get(i).getStartTime();
+                String endTime = customer.getTicketsHistory().get(i).getEndTime();
                 String seatNumber = customer.getTicketsHistory().get(i).getSeatNumber();
                 if (i + 1 != customer.getTicketsHistory().size()) {
                     file.format("%s%s%s%s%n", name + ",", startTime + ",", endTime + ",", seatNumber);

@@ -19,7 +19,7 @@
                 </Text>
                 <Text layoutX="446.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
                 <Text layoutX="108.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
-                <JFXComboBox layoutX="170.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
+                <JFXComboBox fx:id="driversComboBox" layoutX="170.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
                 <JFXComboBox layoutX="610.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
                 <JFXButton layoutX="907.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
             </children>

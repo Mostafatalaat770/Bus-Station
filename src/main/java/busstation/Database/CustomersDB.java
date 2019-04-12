@@ -26,7 +26,7 @@ public class CustomersDB {
      * @param balance
      * @return Boolean
      */
-    public Customer createAccount(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, double balance) {
+    public Customer createAccount(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, String balance) {
         if (validateUsername(username)) {
             customerDB.add(new Customer(username, password, name, age, specialNeeds, VIP, balance));
             return customerDB.get(customerDB.size() - 1);
@@ -92,16 +92,16 @@ public class CustomersDB {
         return customerDB;
     }
 
-    public void addTicket(Customer customer, TripsDB tripsDB, String name, double startTime, double endTime, String seatNumber) {
+    public void addTicket(Customer customer, TripsDB tripsDB, String name, String  startTime, String endTime, String seatNumber) {
         for (int i = 0; i < tripsDB.getExternalTrips().size(); i++) {
             String name1 = tripsDB.getExternalTrips().get(i).getName();
-            double startTime1 = tripsDB.getExternalTrips().get(i).getStartTime();
-            double endTime1 = tripsDB.getExternalTrips().get(i).getEndTime();
+            String startTime1 = tripsDB.getExternalTrips().get(i).getStartTime();
+            String endTime1 = tripsDB.getExternalTrips().get(i).getEndTime();
             if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
                 String startPos = tripsDB.getExternalTrips().get(i).getStartPos();
                 String endPos = tripsDB.getExternalTrips().get(i).getEndPos();
-                double price = tripsDB.getExternalTrips().get(i).getPrice();
-                double discountPrecent = tripsDB.getExternalTrips().get(i).getDiscountPrecent();
+                String price = tripsDB.getExternalTrips().get(i).getPrice();
+                String discountPrecent = tripsDB.getExternalTrips().get(i).getDiscountPrecent();
                 String stopType = tripsDB.getExternalTrips().get(i).getStopType();
                 customer.getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
                 return;
@@ -109,13 +109,13 @@ public class CustomersDB {
         }
         for (int i = 0; i < tripsDB.getInternalTrips().size(); i++) {
             String name1 = tripsDB.getInternalTrips().get(i).getName();
-            double startTime1 = tripsDB.getInternalTrips().get(i).getStartTime();
-            double endTime1 = tripsDB.getInternalTrips().get(i).getEndTime();
+            String startTime1 = tripsDB.getInternalTrips().get(i).getStartTime();
+            String endTime1 = tripsDB.getInternalTrips().get(i).getEndTime();
             if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
                 String startPos = tripsDB.getInternalTrips().get(i).getStartPos();
                 String endPos = tripsDB.getInternalTrips().get(i).getEndPos();
-                double price = tripsDB.getInternalTrips().get(i).getPrice();
-                double discountPrecent = tripsDB.getInternalTrips().get(i).getDiscountPrecent();
+                String price = tripsDB.getInternalTrips().get(i).getPrice();
+                String discountPrecent = tripsDB.getInternalTrips().get(i).getDiscountPrecent();
                 String stopType = tripsDB.getInternalTrips().get(i).getStopType();
                 customerDB.get(getCustomers().size() - 1).getTicketsHistory().add(new Tickets(name, startPos, endPos, startTime, endTime, price, discountPrecent, stopType, seatNumber));
                 return;

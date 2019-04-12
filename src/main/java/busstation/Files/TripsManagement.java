@@ -47,10 +47,10 @@ public class TripsManagement {
                 String name = in.next();
                 String startPos = in.next();
                 String endPos = in.next();
-                double starTime = in.nextDouble();
-                double endTime = in.nextDouble();
-                double price = in.nextDouble();
-                double discountPrecent = in.nextDouble();
+                String starTime = in.next();
+                String endTime = in.next();
+                String price = in.next();
+                String discountPrecent = in.next();
                 String stopType = in.next();
 
                 tripsDB.createInternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
@@ -74,10 +74,10 @@ public class TripsManagement {
                 String name = in.next();
                 String startPos = in.next();
                 String endPos = in.next();
-                double starTime = in.nextDouble();
-                double endTime = in.nextDouble();
-                double price = in.nextDouble();
-                double discountPrecent = in.nextDouble();
+                String starTime = in.next();
+                String endTime = in.next();
+                String price = in.next();
+                String discountPrecent = in.next();
                 String stopType = in.next();
                 tripsDB.createExternalTrip(name, startPos, endPos, starTime, endTime, price, discountPrecent, stopType);
             }
@@ -106,10 +106,10 @@ public class TripsManagement {
                 String name = tempInternalTrip.getName();
                 String startPos = tempInternalTrip.getStartPos();
                 String endPos = tempInternalTrip.getEndPos();
-                double startTime = tempInternalTrip.getStartTime();
-                double endTime = tempInternalTrip.getEndTime();
-                double price = tempInternalTrip.getPrice();
-                double discountPrecent = tempInternalTrip.getDiscountPrecent();
+                String startTime = tempInternalTrip.getStartTime();
+                String endTime = tempInternalTrip.getEndTime();
+                String price = tempInternalTrip.getPrice();
+                String discountPrecent = tempInternalTrip.getDiscountPrecent();
                 String stopType = tempInternalTrip.getStopType();
                 if (i + 1 != tripsDB.getInternalTrips().size()) {
                     file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);
@@ -135,10 +135,10 @@ public class TripsManagement {
                 String name = tempExternalTrip.getName();
                 String startPos = tempExternalTrip.getStartPos();
                 String endPos = tempExternalTrip.getEndPos();
-                double startTime = tempExternalTrip.getStartTime();
-                double endTime = tempExternalTrip.getEndTime();
-                double price = tempExternalTrip.getPrice();
-                double discountPrecent = tempExternalTrip.getDiscountPrecent();
+                String startTime = tempExternalTrip.getStartTime();
+                String endTime = tempExternalTrip.getEndTime();
+                String price = tempExternalTrip.getPrice();
+                String discountPrecent = tempExternalTrip.getDiscountPrecent();
                 String stopType = tempExternalTrip.getStopType();
                 if (i + 1 != tripsDB.getExternalTrips().size()) {
                     file.format("%s%s%s%s%s%s%s%s%n", name + (","), startPos + (","), endPos + (","), startTime + (","), endTime + (","), price + (","), discountPrecent + (","), stopType);

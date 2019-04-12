@@ -20,11 +20,11 @@ public class Manager extends Employees {
         tripsDB.getInternalTrips().remove(trip);
         for (int i = 0; i < customerDB.getCustomers().size(); i++) {
             String name = trip.getName();
-            double startTime = trip.getStartTime();
-            double endTime = trip.getEndTime();
+            String startTime = trip.getStartTime();
+            String endTime = trip.getEndTime();
             String name1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getName();
-            double startTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getStartTime();
-            double endTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getEndTime();
+            String startTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getStartTime();
+            String endTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getEndTime();
 
             if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
                 customerDB.getCustomers().get(i).ticketsHistory.remove(i);
@@ -36,11 +36,11 @@ public class Manager extends Employees {
         tripsDB.getExternalTrips().remove(trip);
         for (int i = 0; i < customerDB.getCustomers().size(); i++) {
             String name = trip.getName();
-            double startTime = trip.getStartTime();
-            double endTime = trip.getEndTime();
+            String startTime = trip.getStartTime();
+            String endTime = trip.getEndTime();
             String name1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getName();
-            double startTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getStartTime();
-            double endTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getEndTime();
+            String startTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getStartTime();
+            String endTime1 = customerDB.getCustomers().get(i).ticketsHistory.get(i).getEndTime();
 
             if (name.equals(name1) && (startTime == startTime1) && (endTime == endTime1)) {
                 customerDB.getCustomers().get(i).ticketsHistory.remove(i);

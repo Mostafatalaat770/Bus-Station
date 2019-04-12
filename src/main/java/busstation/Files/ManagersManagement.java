@@ -93,4 +93,15 @@ public class ManagersManagement implements FileManagement {
         }
 
     }
+    public static void main(String[] args){
+        ManagersDB managersDB = new ManagersDB();
+        ManagersManagement managersManagement =  new ManagersManagement(managersDB);
+        managersDB.createAccount("admin1","admin1","admin",15,"asda");
+        managersManagement.writeFile();
+        Manager m = managersDB.authenticate("admin1","admin1");
+        System.out.println(m.getName());
+        managersManagement.readFile();
+        m = managersDB.authenticate("admin","admin");
+        System.out.println(m.getName());
+    }
 }

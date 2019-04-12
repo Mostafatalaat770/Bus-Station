@@ -72,26 +72,38 @@ public class Controller implements Initializable{
     */
     @FXML private Text errorText;//shows all the errors in authentications, sign up, etc..
     @FXML private Text VIPtext;//for the vip msge. :P
+    /*
 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        /*
+
+         */
+
+    }
+//    tripsManagement.writeExternalFile();
+//        tripsManagement.writeInternalFile();
+//        managersManagement.writeFile();
+//        driversManagement.writeFile();
+//        try {
+//        customersManagement.writeFile();
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+
+
+
+    //at the sample p0age===============================================================
+    @FXML private void handleMangerButtonClick(ActionEvent event) throws IOException {
+
+        humanTypeChooser=1;
         tripsManagement.readInternalFile();
         tripsManagement.readExternalFile();
         managersManagement.readFile();
         driversManagement.readFile();
         customersManagement.readFile(tripsDB);
-    }
-    /*
-    */
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    //at the sample page===============================================================
-    @FXML private void handleMangerButtonClick(ActionEvent event) throws IOException {
-        humanTypeChooser=1;
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -100,6 +112,11 @@ public class Controller implements Initializable{
           }
     @FXML private void handleDriverButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=2;
+        tripsManagement.readInternalFile();
+        tripsManagement.readExternalFile();
+        managersManagement.readFile();
+        driversManagement.readFile();
+        customersManagement.readFile(tripsDB);
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -108,6 +125,11 @@ public class Controller implements Initializable{
          }
     @FXML private void handleCustomerButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=3;
+        tripsManagement.readInternalFile();
+        tripsManagement.readExternalFile();
+        managersManagement.readFile();
+        driversManagement.readFile();
+        customersManagement.readFile(tripsDB);
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -132,8 +154,13 @@ public class Controller implements Initializable{
     */
     //to create a new customer==============================================================
     @FXML private void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
-        
-        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+" "+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)!=null) {
+
+        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+" "+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),"100")!=null) {
+                    try {
+        customersManagement.writeFile();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
             Parent LoginScreen = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene Loginscene = new Scene(LoginScreen);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -263,6 +290,8 @@ public class Controller implements Initializable{
     //hires a driver=======================================================================
     @FXML private void handleHireDriverButtonClick(ActionEvent event) throws IOException {
         if(driversDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),"in the bus station",signUpVIPToggleButton.isSelected())) {
+
+        driversManagement.writeFile();
             Parent LoginScreen = FXMLLoader.load(getClass().getResource("MangerPage.fxml"));
             Scene Loginscene = new Scene(LoginScreen);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
