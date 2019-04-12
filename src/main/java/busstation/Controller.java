@@ -105,7 +105,7 @@ public class Controller {
     */
     //to create a new customer==============================================================
     @FXML private void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
-        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)!=null) {
+        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+" "+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)!=null) {
             Parent LoginScreen = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene Loginscene = new Scene(LoginScreen);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

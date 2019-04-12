@@ -14,21 +14,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/busstation/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="296" column="51" selection-start-line="296" selection-start-column="51" selection-end-line="296" selection-end-column="51" />
+            <state relative-caret-position="194">
+              <caret line="107" column="144" selection-start-line="107" selection-start-column="144" selection-end-line="107" selection-end-column="144" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#handleMangerButtonClick#0;class#Controller#0" />
                 <element signature="method#handleDriverButtonClick#0;class#Controller#0" />
                 <element signature="method#handleCustomerButtonClick#0;class#Controller#0" />
                 <element signature="method#handleSignUpButtonClick#0;class#Controller#0" />
-                <element signature="method#handleSubmitSignUpButtonClick#0;class#Controller#0" />
                 <element signature="method#handleSubmitLogInButton#0;class#Controller#0" />
                 <element signature="method#handleLogOutButton#0;class#Controller#0" />
                 <element signature="method#handleChangePasswordButtonClick#0;class#Controller#0" />
                 <element signature="method#handleAddDriverButtonClick#0;class#Controller#0" />
+                <element signature="method#handleHireDriverButtonClick#0;class#Controller#0" />
                 <element signature="method#handleChangeButtonClick#0;class#Controller#0" />
                 <element signature="method#handleCreateTripButtonClick#0;class#Controller#0" />
+                <element signature="method#handleVIPButtonClick#0;class#Controller#0" />
               </folding>
             </state>
           </provider>
@@ -85,7 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="738" />
     <option name="y" value="-9" />
     <option name="width" value="880" />
@@ -138,7 +139,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555037773989" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555038150488" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -570,21 +571,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/busstation/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="296" column="51" selection-start-line="296" selection-start-column="51" selection-end-line="296" selection-end-column="51" />
+        <state relative-caret-position="194">
+          <caret line="107" column="144" selection-start-line="107" selection-start-column="144" selection-end-line="107" selection-end-column="144" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#handleMangerButtonClick#0;class#Controller#0" />
             <element signature="method#handleDriverButtonClick#0;class#Controller#0" />
             <element signature="method#handleCustomerButtonClick#0;class#Controller#0" />
             <element signature="method#handleSignUpButtonClick#0;class#Controller#0" />
-            <element signature="method#handleSubmitSignUpButtonClick#0;class#Controller#0" />
             <element signature="method#handleSubmitLogInButton#0;class#Controller#0" />
             <element signature="method#handleLogOutButton#0;class#Controller#0" />
             <element signature="method#handleChangePasswordButtonClick#0;class#Controller#0" />
             <element signature="method#handleAddDriverButtonClick#0;class#Controller#0" />
+            <element signature="method#handleHireDriverButtonClick#0;class#Controller#0" />
             <element signature="method#handleChangeButtonClick#0;class#Controller#0" />
             <element signature="method#handleCreateTripButtonClick#0;class#Controller#0" />
+            <element signature="method#handleVIPButtonClick#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
