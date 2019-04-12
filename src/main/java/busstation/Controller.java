@@ -56,7 +56,8 @@ public class Controller {
     /*
 
     */
-    @FXML private Text errorText;//shows all the errors in authentication, sign up, etc..
+    @FXML private Text errorText;//shows all the errors in authentications, sign up, etc..
+    @FXML private Text VIPtext;//for the vip msge. :P
     /*
 
     */
@@ -291,6 +292,10 @@ public class Controller {
     }
     //=====================================================================================
 
+    //shows the vip msge===================================================================
+    @FXML private void handleVIPButtonClick(){VIPtext.setText(
+            "There is no reason to be a VIP member.\nIt's just a despirate atempt form us\n(the developers) to get a bonus mark.\nAlso you get a discount, but u already\nknow thats not real money. Oh well....");}
+    //=====================================================================================
 
 }
 

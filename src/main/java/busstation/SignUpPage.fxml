@@ -34,5 +34,7 @@
       <Text layoutX="707.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't forget to save your account:" />
       <JFXButton layoutX="707.0" layoutY="416.0" onAction="#handleSubmitSignUpButtonClick" style="-fx-background-color: #226666;" text="Submit" />
       <Text fx:id="errorText" layoutX="252.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <JFXButton layoutX="850.0" layoutY="163.0" onAction="#handleVIPButtonClick" text="Why VIP?" />
+      <Text fx:id="VIPtext" layoutX="707.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>

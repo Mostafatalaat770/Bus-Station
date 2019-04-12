@@ -36,7 +36,7 @@
                   <JFXButton layoutX="65.0" layoutY="419.0" onAction="#handleSignUpButtonClick" style="-fx-background-color: #226666;" text="Sign up" />
                </children>
             </AnchorPane>
-            <Text layoutX="106.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to SwiSta BusStation" textAlignment="CENTER" wrappingWidth="376.0">
+            <Text layoutX="106.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to SwiSta Bus Station" textAlignment="CENTER" wrappingWidth="376.0">
                <font>
                   <Font name="Calibri Bold" size="42.0" />
                </font>
