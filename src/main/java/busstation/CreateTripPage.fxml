@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+   <children>
+      <AnchorPane layoutX="12.0" layoutY="51.0" prefHeight="435.0" prefWidth="976.0" style="-fx-background-color: #669999;">
+         <children>
+            <VBox layoutX="14.0" layoutY="15.0" prefHeight="403.0" prefWidth="283.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" />
+                  <JFXTextField promptText="name" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start position:" />
+                  <JFXTextField promptText="location" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="trip's destination:" />
+                  <JFXTextField promptText="location" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start time:" />
+                  <JFXTextField promptText="time" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" />
+                  <JFXTextField promptText="in Egyptian pounds" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End time:" />
+                  <JFXTextField promptText="time" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Discount percent (for VIP customers):" />
+                  <JFXTextField promptText="precentage" />
+               </children>
+            </VBox>
+            <Text layoutX="488.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's type:" />
+            <JFXButton layoutX="863.0" layoutY="377.0" style="-fx-background-color: #226666;" text="Save trip" />
+            <JFXComboBox layoutX="488.0" layoutY="51.0" prefHeight="31.0" prefWidth="246.0" promptText="Trip's type" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="25.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Trip">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

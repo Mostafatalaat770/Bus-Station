@@ -8,10 +8,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
    <children>
-      <Label fx:id="customerNameLabel" layoutX="80.0" layoutY="34.0" text="swidan loves musty, especially when he is sweaty" />
-      <Label text="Label" />
-      <Text layoutX="238.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <AnchorPane layoutX="14.0" layoutY="48.0" prefHeight="438.0" prefWidth="973.0" style="-fx-background-color: #669999;">
+         <children>
+            <Text layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a trip to join:" wrappingWidth="145.6708984375" />
+            <JFXComboBox layoutX="171.0" layoutY="42.0" prefHeight="31.0" prefWidth="170.0" promptText="Trips" />
+            <JFXTextField layoutX="171.0" layoutY="106.0" maxWidth="170.0" minWidth="170.0" prefHeight="37.0" prefWidth="170.0" promptText="balance" />
+            <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add balance:" />
+            <JFXComboBox layoutX="171.0" layoutY="170.0" prefHeight="31.0" prefWidth="170.0" promptText="Trips" />
+            <Text layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Review booked trips:" />
+            <VBox layoutX="14.0" layoutY="224.0" prefHeight="200.0" prefWidth="327.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="starts from:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="trip's destination:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="driver's name:" />
+               </children>
+            </VBox>
+            <JFXButton layoutX="396.0" layoutY="42.0" style="-fx-background-color: #226666;" text="save" />
+            <JFXButton layoutX="398.0" layoutY="110.0" style="-fx-background-color: #226666;" text="add" />
+            <JFXButton layoutX="389.0" layoutY="181.0" style="-fx-background-color: #226666;" text="review" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome user">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="901.0" layoutY="13.0" onAction="#handleLogOutButton" style="-fx-background-color: #669999;" text="Log out" />
+      <JFXButton layoutX="742.0" layoutY="13.0" onAction="#handleChangePasswordButtonClick" style="-fx-background-color: #669999;" text="Change password" />
    </children>
 </AnchorPane>

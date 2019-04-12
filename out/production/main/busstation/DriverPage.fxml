@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="54.0" prefHeight="435.0" prefWidth="975.0" style="-fx-background-color: #669999;">
+         <children>
+            <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="view trip:" />
+            <JFXComboBox layoutX="84.0" layoutY="9.0" prefHeight="31.0" prefWidth="154.0" promptText="Trip" />
+            <JFXButton layoutX="271.0" layoutY="9.0" style="-fx-background-color: #226666;" text="Load" />
+            <VBox layoutX="14.0" layoutY="53.0" prefHeight="200.0" prefWidth="315.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starts from:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip,s destination:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Text layoutX="25.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome captin">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="917.0" layoutY="14.0" onAction="#handleLogOutButton" style="-fx-background-color: #669999;" text="Log out" />
+      <JFXButton layoutX="758.0" layoutY="14.0" onAction="#handleChangePasswordButtonClick" style="-fx-background-color: #669999;" text="Change password" />
+   </children>
+</AnchorPane>

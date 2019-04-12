@@ -6,6 +6,10 @@ import busstation.Database.ManagersDB;
 import busstation.Database.TripsDB;
 import busstation.Files.CustomersManagement;
 import busstation.Humans.Customer;
+import busstation.Humans.Driver;
+import busstation.Humans.Manager;
+import busstation.Tickets.Tickets;
+import busstation.Trips.Trips;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,36 +22,51 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Controller {
+    //to choose between the 3 humans (driver, customer, manger)
     private static int humanTypeChooser;
-   @FXML private Label customerNameLabel ;
-    static CustomersDB customersDB = new CustomersDB();
-    CustomersManagement customersManagement = new CustomersManagement(customersDB);
-    ManagersDB managersDB = new ManagersDB();
-    DriversDB driversDB = new DriversDB();
-    TripsDB tripsDB = new TripsDB();
-    Customer customer;
-    // sign up paramerters==============================================================
-    public TextField logInUserNameTextField=new TextField();
-    public PasswordField logInPasswordTextField=new PasswordField();
-    public TextField signUpFirstNameTextField=new TextField();
-    public TextField signUpLastNameTextField=new TextField();
-    public TextField signUpUsernameTextField=new TextField();
-    public TextField signUpPasswordTextField=new TextField();
-    public TextField signUpAgeTextField=new TextField();
-    public ToggleButton signUpVIPToggleButton=new ToggleButton();
-    //==================================================================================
+    //handling database================================================================
+    private static CustomersDB customersDB = new CustomersDB();
+    private static ManagersDB managersDB = new ManagersDB();
+    private static DriversDB driversDB = new DriversDB();
+    private static  TripsDB tripsDB = new TripsDB();
+    //=================================================================================
+    /*
 
+    */
+    //refrence to the data base========================================================
+    private static Manager manager;
+    private static Customer customer;
+    private static Driver driver;
+    private  static Tickets tickets;
+    private  static Trips trips;
+    //=================================================================================
+    /*
 
+    */
+    // sign up paramerters=============================================================
+    @FXML private TextField logInUserNameTextField=new TextField();
+    @FXML private PasswordField logInPasswordTextField=new PasswordField();
+    @FXML private TextField signUpFirstNameTextField=new TextField();
+    @FXML private TextField signUpLastNameTextField=new TextField();
+    @FXML private TextField signUpUsernameTextField=new TextField();
+    @FXML private TextField signUpPasswordTextField=new TextField();
+    @FXML private TextField signUpAgeTextField=new TextField();
+    @FXML private ToggleButton signUpVIPToggleButton=new ToggleButton();
+    //=================================================================================
+    /*
 
-    public void handleMangerButtonClick(ActionEvent event) throws IOException {
+    */
+    //at the sample page===============================================================
+    @FXML private void handleMangerButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=1;
+        managersDB.createAccount("admin","admin","swidan",20,"214 portsaid");
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(Loginscene);
         window.show();
           }
-    public void handleDriverButtonClick(ActionEvent event) throws IOException {
+    @FXML private void handleDriverButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=2;
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
@@ -55,7 +74,7 @@ public class Controller {
         window.setScene(Loginscene);
         window.show();
          }
-    public void handleCustomerButtonClick(ActionEvent event) throws IOException {
+    @FXML private void handleCustomerButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=3;
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
@@ -63,47 +82,74 @@ public class Controller {
         window.setScene(Loginscene);
         window.show();
     }
-    public void handleSignUpButtonClick(ActionEvent event) throws IOException {
+    //=================================================================================
+    /*
+
+    */
+    //to open the sign up scene============================================================
+    @FXML private void handleSignUpButtonClick(ActionEvent event) throws IOException {
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("SignUpPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(Loginscene);
         window.show();
     }
-    public void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
-        Parent LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
-        customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100);
-        Scene Loginscene = new Scene(LoginScreen);
-        customersManagement.writeFile();
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(Loginscene);
-        window.show();
+    //=====================================================================================
+    /*
+
+    */
+    //to create a new customer==============================================================
+    @FXML private void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
+        if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)) {
+
+            Parent LoginScreen = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Scene Loginscene = new Scene(LoginScreen);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(Loginscene);
+            window.show();
+        }
+        else
+            System.out.println("username already used ");
+
     }
+    //======================================================================================
+    /*
+
+    */
+    //authentication for all humans=========================================================
     @FXML private void handleSubmitLogInButton(ActionEvent event) throws IOException {
         switch (humanTypeChooser)
         {
-            case 1:
-                customer = customersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
-                if(customer !=null){
+            case 1://manger
+              manager= managersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
+                if(manager !=null){
                 Parent LoginScreen= FXMLLoader.load(getClass().getResource("MangerPage.fxml"));
                 Scene Loginscene = new Scene(LoginScreen);
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(Loginscene);
                 window.show();}
                 else
-                    System.out.println("a7a");
+                    System.out.println("wrong password");
                 break;
-            case 2:
-
-            case 3:
-                customersManagement.readFile();
+            case 2://driver
+                driver = driversDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
+                if (driver!= null) {
+                    Parent LoginScreen = FXMLLoader.load(getClass().getResource("DriverPage.fxml"));
+                    Scene Loginscene = new Scene(LoginScreen);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+                }
+                else
+                    System.out.println("wrong password");
+                break;
+            case 3://customer
                 customer = customersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
                 if(customer !=null){
 
-                    Parent LoginScreen= FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
-                    Scene Loginscene = new Scene(LoginScreen);
-                    //System.out.println( customerNameLabel.getText());
-                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                   Parent LoginScreen= FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+                   Scene Loginscene = new Scene(LoginScreen);
+                   Stage  window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(Loginscene);
                     window.show();
                 }
@@ -112,14 +158,136 @@ public class Controller {
                 break;
 
         }
+
     }
-    public void handleMangeMangerAccountButtonClick(ActionEvent event) throws IOException {
-        Parent LoginScreen= FXMLLoader.load(getClass().getResource("MangeAccount.fxml"));
+    //======================================================================================
+    /*
+
+     */
+    //rewrites the files to save changes===================================================
+    @FXML private void handleLogOutButton(ActionEvent event) throws IOException {
+        switch (humanTypeChooser)
+        {
+            case 1:
+                    Parent LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    Scene Loginscene = new Scene(LoginScreen);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+
+                break;
+            case 2:
+                 LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                Loginscene = new Scene(LoginScreen);
+                window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                window.setScene(Loginscene);
+                window.show();
+                break;
+            case 3:
+
+                    LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    Loginscene = new Scene(LoginScreen);
+                    window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+
+                break;
+
+        }
+
+    }
+    //=====================================================================================
+    /*
+
+    */
+    //shows the change password scene=======================================================
+    @FXML private void handleChangePasswordButtonClick(ActionEvent event) throws IOException {
+        Parent LoginScreen= FXMLLoader.load(getClass().getResource("ChangePassword.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(Loginscene);
         window.show();
     }
+    //======================================================================================
+    /*
+
+    */
+    //opens the hiring scene================================================================
+    @FXML private void handleAddDriverButtonClick(ActionEvent event) throws IOException {
+
+        Parent LoginScreen= FXMLLoader.load(getClass().getResource("AddDriverPage.fxml"));
+        Scene Loginscene = new Scene(LoginScreen);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(Loginscene);
+        window.show();
+    }
+    //======================================================================================
+    /*
+
+    */
+    //hires a driver=======================================================================
+    @FXML private void handleHireDriverButtonClick(ActionEvent event) throws IOException {
+        if(driversDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),"in the bus station",signUpVIPToggleButton.isSelected())) {
+            Parent LoginScreen = FXMLLoader.load(getClass().getResource("MangerPage.fxml"));
+            Scene Loginscene = new Scene(LoginScreen);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(Loginscene);
+            window.show();
+        }
+        else
+            System.out.println("username already used ");
 
     }
+    //=====================================================================================
+    /*
+
+    */
+    //changes password for human===========================================================
+    @FXML private void handleChangeButtonClick(ActionEvent event) throws IOException {
+        switch (humanTypeChooser)
+        {
+            case 1://manger
+               managersDB.changePassword(manager,signUpPasswordTextField.getText());
+                    Parent LoginScreen= FXMLLoader.load(getClass().getResource("MangerPage.fxml"));
+                    Scene Loginscene = new Scene(LoginScreen);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+                break;
+            case 2://driver
+                driversDB.changePassword(driver,signUpPasswordTextField.getText());
+                    LoginScreen = FXMLLoader.load(getClass().getResource("DriverPage.fxml"));
+                    Loginscene = new Scene(LoginScreen);
+                    window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+                break;
+            case 3://customer
+               customersDB.changePassword(customer,signUpPasswordTextField.getText());
+                    LoginScreen= FXMLLoader.load(getClass().getResource("CustomerPage.fxml"));
+                    Loginscene = new Scene(LoginScreen);
+                    window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(Loginscene);
+                    window.show();
+                break;
+
+        }
+
+    }
+    //=====================================================================================
+    /*
+
+    */
+    //show create trip scene===============================================================
+    @FXML private void handleCreateTripButtonClick(ActionEvent event) throws IOException {
+        Parent LoginScreen= FXMLLoader.load(getClass().getResource("CreateTripPage.fxml"));
+        Scene Loginscene = new Scene(LoginScreen);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(Loginscene);
+        window.show();
+    }
+    //=====================================================================================
+
+
+}
 

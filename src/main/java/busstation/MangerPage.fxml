@@ -10,18 +10,18 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
     <children>
-        <AnchorPane layoutX="14.0" layoutY="72.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
+        <AnchorPane layoutX="14.0" layoutY="73.0" prefHeight="200.0" prefWidth="972.0" style="-fx-background-color: #669999;">
             <children>
                 <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assign a driver to a trip:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text layoutX="6.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
-                <Text layoutX="14.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
-                <JFXComboBox layoutX="73.0" layoutY="85.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
-                <JFXComboBox layoutX="73.0" layoutY="155.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
-                <JFXButton layoutX="414.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
+                <Text layoutX="446.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is assigned to the trip:" />
+                <Text layoutX="108.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
+                <JFXComboBox layoutX="170.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Driver's name" />
+                <JFXComboBox layoutX="610.0" layoutY="95.0" prefHeight="31.0" prefWidth="258.0" promptText="Trip's name" />
+                <JFXButton layoutX="907.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
             </children>
         </AnchorPane>
         <AnchorPane layoutX="14.0" layoutY="286.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
@@ -37,11 +37,11 @@
                 <JFXButton layoutX="411.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
             </children>
         </AnchorPane>
-        <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome //name comes here">
+        <Text layoutX="34.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome boss">
             <font>
                 <Font size="18.0" />
             </font></Text>
-        <JFXButton layoutX="885.0" layoutY="22.0" style="-fx-background-color: #669999;" text="Log out" />
+        <JFXButton layoutX="885.0" layoutY="22.0" onAction="#handleLogOutButton" style="-fx-background-color: #669999;" text="Log out" />
         <AnchorPane layoutX="510.0" layoutY="286.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
             <children>
                 <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Review a trip:">
@@ -61,23 +61,8 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <JFXButton layoutX="742.0" layoutY="22.0" style="-fx-background-color: #669999;" text="Mange account" />
-      <AnchorPane layoutX="510.0" layoutY="72.0" prefHeight="200.0" prefWidth="476.0" style="-fx-background-color: #669999;">
-         <children>
-            <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a trip:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <JFXButton layoutX="414.0" layoutY="155.0" style="-fx-background-color: #226666;" text="Save" />
-            <JFXTextField layoutX="14.0" layoutY="109.0" promptText="trip's starting point" />
-            <JFXTextField layoutX="14.0" layoutY="63.0" promptText="trip's name" />
-            <JFXTextField layoutX="14.0" layoutY="152.0" promptText="trip's destionation" />
-            <JFXTextField layoutX="231.0" layoutY="63.0" promptText="trip's duration" />
-            <JFXTextField layoutX="231.0" layoutY="109.0" promptText="trip's price" />
-            <JFXToggleButton layoutX="157.0" layoutY="8.0" text="is trip external?" />
-         </children>
-      </AnchorPane>
-      <JFXTextField layoutX="24.0" layoutY="73.0" />
+        <JFXButton layoutX="736.0" layoutY="22.0" onAction="#handleChangePasswordButtonClick" style="-fx-background-color: #669999;" text="Change password" />
+      <JFXButton layoutX="633.0" layoutY="22.0" onAction="#handleAddDriverButtonClick" style="-fx-background-color: #669999;" text="Add driver" />
+      <JFXButton layoutX="517.0" layoutY="22.0" onAction="#handleCreateTripButtonClick" style="-fx-background-color: #669999;" text="Create a trip" />
     </children>
 </AnchorPane>
