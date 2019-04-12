@@ -4,11 +4,13 @@ import busstation.Database.CustomersDB;
 import busstation.Database.DriversDB;
 import busstation.Database.ManagersDB;
 import busstation.Database.TripsDB;
+import busstation.Database.VehiclesDB;
 import busstation.Files.CustomersManagement;
 import busstation.Files.DriversManagement;
 import busstation.Files.ManagersManagement;
 import busstation.Files.TicketsManagement;
 import busstation.Files.TripsManagement;
+import busstation.Files.VehiclesManagement;
 import busstation.Humans.Customer;
 import busstation.Humans.Driver;
 import busstation.Humans.Manager;
@@ -24,22 +26,26 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
-
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+public class Controller implements Initializable{
+    
     //to choose between the 3 humans (driver, customer, manger)
     private static int humanTypeChooser;
     //handling database================================================================
     private static CustomersDB customersDB = new CustomersDB();
     private static ManagersDB managersDB = new ManagersDB();
     private static DriversDB driversDB = new DriversDB();
-    private static  TripsDB tripsDB = new TripsDB();
+    private static TripsDB tripsDB = new TripsDB();
+    private static VehiclesDB vehiclesDB = new VehiclesDB();
     private static CustomersManagement customersManagement = new CustomersManagement(customersDB);
     private static DriversManagement driversManagement = new DriversManagement(driversDB);
     private static ManagersManagement managersManagement = new ManagersManagement(managersDB);
     private static TripsManagement tripsManagement = new TripsManagement(tripsDB);
+    private static VehiclesManagement vehiclesManagement = new VehiclesManagement(vehiclesDB);
     //=================================================================================
     /*
-
     */
     //refrence to the data base========================================================
     private static Manager manager;
@@ -66,13 +72,26 @@ public class Controller {
     */
     @FXML private Text errorText;//shows all the errors in authentications, sign up, etc..
     @FXML private Text VIPtext;//for the vip msge. :P
-    /*
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tripsManagement.readInternalFile();
+        tripsManagement.readExternalFile();
+        managersManagement.readFile();
+        driversManagement.readFile();
+        customersManagement.readFile(tripsDB);
+    }
+    /*
     */
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     //at the sample page===============================================================
     @FXML private void handleMangerButtonClick(ActionEvent event) throws IOException {
         humanTypeChooser=1;
-        managersDB.createAccount("admin","admin","swidan",20,"214 portsaid");
         Parent LoginScreen= FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene Loginscene = new Scene(LoginScreen);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -113,6 +132,7 @@ public class Controller {
     */
     //to create a new customer==============================================================
     @FXML private void handleSubmitSignUpButtonClick(ActionEvent event) throws IOException {
+        
         if(customersDB.createAccount(signUpUsernameTextField.getText(),signUpPasswordTextField.getText(),signUpFirstNameTextField.getText()+" "+signUpLastNameTextField.getText(),Integer.parseInt(signUpAgeTextField.getText()),false,signUpVIPToggleButton.isSelected(),100)!=null) {
             Parent LoginScreen = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene Loginscene = new Scene(LoginScreen);
@@ -132,16 +152,17 @@ public class Controller {
     @FXML private void handleSubmitLogInButton(ActionEvent event) throws IOException {
         switch (humanTypeChooser)
         {
-            case 1://manger
-              manager= managersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
+            case 1://manager
+                manager= managersDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
                 if(manager !=null){
                 Parent LoginScreen= FXMLLoader.load(getClass().getResource("MangerPage.fxml"));
                 Scene Loginscene = new Scene(LoginScreen);
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(Loginscene);
                 window.show();}
-                else
+                else {
                     errorText.setText("Wrong username or password!");
+        }
                 break;
             case 2://driver
                 driver = driversDB.authenticate(logInUserNameTextField.getText(),logInPasswordTextField.getText());
@@ -181,6 +202,7 @@ public class Controller {
         switch (humanTypeChooser)
         {
             case 1:
+                    managersManagement.writeFile();
                     Parent LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
                     Scene Loginscene = new Scene(LoginScreen);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -189,14 +211,15 @@ public class Controller {
 
                 break;
             case 2:
-                 LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                driversManagement.writeFile();
+                LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
                 Loginscene = new Scene(LoginScreen);
                 window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(Loginscene);
                 window.show();
                 break;
             case 3:
-
+                    customersManagement.writeFile();
                     LoginScreen= FXMLLoader.load(getClass().getResource("sample.fxml"));
                     Loginscene = new Scene(LoginScreen);
                     window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -246,8 +269,9 @@ public class Controller {
             window.setScene(Loginscene);
             window.show();
         }
-        else
+        else {
             errorText.setText("Username already exists!");
+        }
 
     }
     //=====================================================================================
