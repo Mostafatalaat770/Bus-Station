@@ -14,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.Scanner;
 
-
 /**
  *
  * @author Mostafa Talaat
@@ -30,6 +29,7 @@ public class VehiclesManagement {
 
     public boolean readBuses() {
         try {
+            vehiclesDB.getBuses().clear();
             in = new Scanner(new File("Buses.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
@@ -51,6 +51,7 @@ public class VehiclesManagement {
 
     public boolean readLimousines() {
         try {
+            vehiclesDB.getLimousines().clear();
             in = new Scanner(new File("Limousine.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
@@ -72,6 +73,7 @@ public class VehiclesManagement {
 
     public boolean readMiniBuses() {
         try {
+            vehiclesDB.getMiniBuses().clear();
             in = new Scanner(new File("MiniBuses.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
@@ -113,6 +115,7 @@ public class VehiclesManagement {
             return false;
         }
     }
+
     public boolean writeLimousines() {
         try {
             Formatter file = new Formatter(new File("Limousines.txt"));
@@ -135,6 +138,7 @@ public class VehiclesManagement {
             return false;
         }
     }
+
     public boolean writeMiniBuses() {
         try {
             Formatter file = new Formatter(new File("Buses.txt"));

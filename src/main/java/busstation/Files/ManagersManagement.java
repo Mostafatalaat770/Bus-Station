@@ -39,6 +39,7 @@ public class ManagersManagement implements FileManagement {
     @Override
     public boolean readFile() {
         try {
+            managersDB.getManagers().clear();
             in = new Scanner(new File("Managers.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {

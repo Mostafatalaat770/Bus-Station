@@ -39,6 +39,7 @@ public class DriversManagement implements FileManagement {
     @Override
     public boolean readFile() {
         try {
+            driversDB.getDrivers().clear();
             in = new Scanner(new File("Drivers.txt"));
             in.useDelimiter(",|\\n");
             while (in.hasNextLine()) {
