@@ -20,10 +20,10 @@ public class Customer {
     private int age;
     private boolean specialNeeds;
     private boolean VIP;
-    private double balance;
+    private String balance;
     ArrayList<Tickets> ticketsHistory = new ArrayList<>();
 
-    public Customer(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, double balance) {
+    public Customer(String username, String password, String name, int age, boolean specialNeeds, boolean VIP, String balance) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -31,6 +31,13 @@ public class Customer {
         this.specialNeeds = specialNeeds;
         this.VIP = VIP;
         this.balance = balance;
+    }
+
+    public void refund(Tickets ticket) {
+
+        balance += ticket.calculate(VIP, balance);
+        ticketsHistory.remove(ticket);
+
     }
 
     public String getUsername() {
@@ -81,13 +88,16 @@ public class Customer {
         this.VIP = VIP;
     }
 
-    public double getBalance() {
+    public String getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(String balance) {
         this.balance = balance;
     }
-    
-    
+
+    public ArrayList<Tickets> getTicketsHistory() {
+        return ticketsHistory;
+    }
+
 }

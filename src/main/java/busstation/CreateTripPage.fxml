@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #226666;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+   <children>
+      <AnchorPane layoutX="12.0" layoutY="51.0" prefHeight="435.0" prefWidth="976.0" style="-fx-background-color: #669999;">
+         <children>
+            <VBox layoutX="14.0" layoutY="15.0" prefHeight="403.0" prefWidth="283.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's name:" />
+                  <JFXTextField fx:id="nameTextField" promptText="name" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start position:" />
+                  <JFXTextField fx:id="startLocationTextField" promptText="location" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="trip's destination:" />
+                  <JFXTextField fx:id="endLocationTextField" promptText="location" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start time:" />
+                  <JFXTextField fx:id="startTimeTextField" promptText="time" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's price:" />
+                  <JFXTextField fx:id="priceTextField" promptText="in Egyptian pounds" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Discount percent (for VIP customers):" />
+                  <JFXTextField fx:id="discountTextField" promptText="precentage" />
+               </children>
+            </VBox>
+            <Text layoutX="488.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip's type:" />
+            <JFXButton layoutX="863.0" layoutY="377.0" onAction="#handlesaveTripButtonClick" style="-fx-background-color: #226666;" text="Save trip" />
+            <JFXComboBox fx:id="tripTypeComboBox" layoutX="488.0" layoutY="168.0" prefHeight="31.0" prefWidth="246.0" promptText="Trip's type" />
+            <JFXToggleButton fx:id="externalTripToggleButton" layoutX="484.0" layoutY="22.0" text="External trip" />
+            <Text layoutX="488.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="It's internal by default" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="25.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Trip">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

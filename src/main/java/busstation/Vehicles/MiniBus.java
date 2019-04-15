@@ -11,8 +11,10 @@ package busstation.Vehicles;
  */
 public class MiniBus extends Vehicles {
 
-    public MiniBus(int capacity, boolean hasSepcialNeeds, boolean hasAC, boolean hasWIFI) {
-        super(capacity, hasSepcialNeeds, hasAC, hasWIFI);
+    public MiniBus(String name, int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
+        super(name, capacity, specialNeeds, AC, WIFI);
     }
+
+    
 
 }

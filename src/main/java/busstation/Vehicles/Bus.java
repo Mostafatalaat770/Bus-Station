@@ -10,9 +10,10 @@ package busstation.Vehicles;
  * @author Mostafa Talaat
  */
 public class Bus extends Vehicles {
-    
-    public Bus(int capacity, boolean hasSepcialNeeds, boolean hasAC, boolean hasWIFI) {
-        super(capacity, hasSepcialNeeds, hasAC, hasWIFI);
+   
+    public Bus(String name, int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
+        super(name, capacity, specialNeeds, AC, WIFI);
     }
+   
     
 }

@@ -14,19 +14,22 @@ public abstract class Trips {
     private String name;
     private String startPos;
     private String endPos;
-    private String distance;
-    private double duration;
-    private int stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
+    private String startTime;
+    private String endTime;
+    private String price;
+    private String discountPrecent;
+    private String stopType; // 1 : Non-Stop, 2 : One-Stop, 3 : Many-Stops.
 
-    public Trips(String name, String startPos, String endPos, String distance, double duration, int stopType) {
+    public Trips(String name, String startPos, String endPos, String startTime, String endTime, String price, String discountPrecent, String stopType) {
         this.name = name;
         this.startPos = startPos;
         this.endPos = endPos;
-        this.distance = distance;
-        this.duration = duration;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.price = price;
+        this.discountPrecent = discountPrecent;
         this.stopType = stopType;
     }
-
 
     public String getName() {
         return name;
@@ -52,29 +55,44 @@ public abstract class Trips {
         this.endPos = endPos;
     }
 
-    public String getDistance() {
-        return distance;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setDistance(String distance) {
-        this.distance = distance;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public double getDuration() {
-        return duration;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setDuration(double duration) {
-        this.duration = duration;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public int getStopType() {
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getDiscountPrecent() {
+        return discountPrecent;
+    }
+
+    public void setDiscountPrecent(String discountPrecent) {
+        this.discountPrecent = discountPrecent;
+    }
+
+    public String getStopType() {
         return stopType;
     }
 
-    public void setStopType(int stopType) {
+    public void setStopType(String stopType) {
         this.stopType = stopType;
     }
-
 
 }

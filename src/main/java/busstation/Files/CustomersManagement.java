@@ -6,6 +6,7 @@
 package busstation.Files;
 
 import busstation.Database.CustomersDB;
+import busstation.Database.TripsDB;
 import busstation.Humans.Customer;
 import java.io.*;
 import java.util.Formatter;
@@ -15,10 +16,10 @@ import java.util.Scanner;
  *
  * @author Mostafa Talaat
  */
-public class CustomersManagement implements FileManagement {
+public class CustomersManagement {
 
-    private Scanner in;
     private final CustomersDB customersDB;
+    private final TicketsManagement ticketsManagement = new TicketsManagement();
 
     /**
      * Takes the object of the database of customers so we can do operations on
@@ -31,27 +32,31 @@ public class CustomersManagement implements FileManagement {
     }
 
     /**
-     * Read method which reads a predefined file and splits it in-order to get
-     * our parameters from it. The parameters are comma separated.
+     * Read method which reads a predefined file and splits it
+     * inputScanner-order to get our parameters from it.The parameters are comma
+     * separated.
      *
+     * @param tripsDB
      * @return Boolean
      */
-    @Override
-    public boolean readFile() {
+    public boolean readFile(TripsDB tripsDB) {
         try {
-            in = new Scanner(new File("Customers.txt"));
-            in.useDelimiter(",|\\n");
-            while (in.hasNextLine()) {
-                String username = in.next();
-                String password = in.next();
-                String name = in.next();
-                int age = Integer.parseInt(in.next());
-                boolean specialNeeds = Boolean.parseBoolean(in.next());
-                boolean VIP = Boolean.parseBoolean(in.next());
-                double balance = Double.parseDouble(in.next());
-                customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
+            customersDB.getCustomers().clear();
+            Scanner inputScanner1 = new Scanner(new File("Customers.txt"));
+            inputScanner1.useDelimiter(",|\\n");
+            while (inputScanner1.hasNextLine()) {
+
+                String username = inputScanner1.next();
+                String password = inputScanner1.next();
+                String name = inputScanner1.next();
+                int age = Integer.parseInt(inputScanner1.next());
+                boolean specialNeeds = Boolean.parseBoolean(inputScanner1.next());
+                boolean VIP = Boolean.parseBoolean(inputScanner1.next());
+                String balance = (inputScanner1.next());
+                Customer temp = customersDB.createAccount(username, password, name, age, specialNeeds, VIP, balance);
+                ticketsManagement.readFile(temp, customersDB, tripsDB);
             }
-            in.close();
+
             System.out.println("read file.\n");
             return true;
         } catch (FileNotFoundException ex) {
@@ -63,13 +68,13 @@ public class CustomersManagement implements FileManagement {
 
     /**
      * Write method which saves the database of customers in a predefined file
-     * or creates one if it isn't created. It saves the attributes of the class
+     * or creates one if it isn't created.It saves the attributes of the class
      * comma separated.
      *
      * @return Boolean
+     * @throws java.io.IOException
      */
-    @Override
-    public boolean writeFile() {
+    public boolean writeFile() throws IOException {
         try {
             Formatter file = new Formatter("Customers.txt");
             for (int i = 0; i < customersDB.getCustomers().size(); i++) {
@@ -80,15 +85,19 @@ public class CustomersManagement implements FileManagement {
                 int age = tempCustomer.getAge();
                 boolean specialNeeds = tempCustomer.isSpecialNeeds();
                 boolean VIP = tempCustomer.isVIP();
-                double balance = tempCustomer.getBalance();
+                String balance = tempCustomer.getBalance();
+                if (tempCustomer.getTicketsHistory().size() > 0) {
+                    ticketsManagement.writeFile(tempCustomer);
+                }
                 if (i + 1 != customersDB.getCustomers().size()) {
                     file.format("%s%s%s%s%s%s%s%n", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
+
                 } else {
                     file.format("%s%s%s%s%s%s%s", username + (","), password + (","), name + (","), age + (","), specialNeeds + (","), VIP + (","), balance);
-
                 }
 
             }
+
             file.close();
             return true;
         } catch (FileNotFoundException ex) {
@@ -96,4 +105,17 @@ public class CustomersManagement implements FileManagement {
         }
 
     }
-}
+    public static void main(String[] args) throws IOException {
+        CustomersDB customersDB1 = new CustomersDB();
+        TripsDB tripsDB = new TripsDB();
+        CustomersManagement customersManagement = new CustomersManagement(customersDB1);
+        customersDB1.createAccount("1", "2", "3", 0, true, true, "0");
+        Customer c = customersDB1.authenticate("1", "2");
+        System.out.println(c.getName());
+        customersManagement.writeFile();
+        customersManagement.readFile(tripsDB);
+        c = customersDB1.authenticate("1", "2");
+        System.out.println(c.getName());
+    }
+    }
+

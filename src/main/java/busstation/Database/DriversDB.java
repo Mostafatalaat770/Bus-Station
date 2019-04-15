@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class DriversDB {
 
      ArrayList<Driver> driversDB = new ArrayList<>();
+     ArrayList<String> driversUsernames= new ArrayList<>();
 
     /**
      * Creates a new object of type Driver iff there is no conflict with other
@@ -19,15 +20,13 @@ public class DriversDB {
      * @param username
      * @param password
      * @param name
-     * @param age
      * @param address
-     * @param salary
-     * @param working
      * @return Boolean
      */
-    public boolean createAccount(String username, String password, String name, int age, String address, double salary, boolean working) {
+    public boolean createAccount(String username, String password, String name, String address) {
         if (validateUsername(username)) {
-            driversDB.add(new Driver(username, password, name, age, address, salary, working));
+            driversDB.add(new Driver(username, password, name,0, address));
+            driversUsernames.add(username);
             return true;
         }
         return false;
@@ -78,5 +77,16 @@ public class DriversDB {
     public boolean changePassword(Driver Driver, String newPassword) {
         Driver.setPassword(newPassword);
         return true;
+    }
+
+    public ArrayList<String> getDriversUsernames() {
+        return driversUsernames;
+    }
+
+    public ArrayList<Driver> getDrivers(){
+        
+        return driversDB;
+
+
     }
 }

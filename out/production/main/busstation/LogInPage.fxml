@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #669999;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="busstation.Controller">
+<children>
+    <AnchorPane prefHeight="506.0" prefWidth="500.0" style="-fx-background-color: #226666;">
+        <children>
+            <Text layoutX="14.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this program's full copy rights are claimed by &#10;Mostafa talaat's and Ahmed swidan's SwiSta corperation&#10;Any act of plaigerism will be subjexted to the law">
+                <font>
+                    <Font size="11.0" />
+                </font>
+            </Text>
+        </children>
+    </AnchorPane>
+    <AnchorPane layoutX="500.0" prefHeight="506.0" prefWidth="500.0" style="-fx-background-color: #669999;">
+        <children>
+            <Text layoutX="212.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login info" wrappingWidth="76.61376953125" />
+            <JFXButton layoutX="218.0" layoutY="354.0" onAction="#handleSubmitLogInButton" style="-fx-background-color: #226666;" text="Submit" />
+            <JFXPasswordField fx:id="logInPasswordTextField" layoutX="104.0" layoutY="235.0" maxWidth="289.0" minWidth="236.0" prefHeight="37.0" prefWidth="289.0" promptText="password" />
+            <JFXTextField fx:id="logInUserNameTextField" layoutX="104.0" layoutY="151.0" maxWidth="289.0" minWidth="215.0" prefHeight="37.0" prefWidth="289.0" promptText="Username" />
+            <Text fx:id="errorText" layoutX="146.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="205.0" />
+        </children>
+    </AnchorPane>
+</children>
+</AnchorPane>

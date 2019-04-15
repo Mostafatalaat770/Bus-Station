@@ -1,0 +1,4 @@
+1,1,12,in the bus station
+2,2,2,in the bus station
+3,3,3,in the bus station
+10,10,10,in the bus station

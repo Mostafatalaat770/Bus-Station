@@ -10,17 +10,29 @@ package busstation.Vehicles;
  * @author Mostafa Talaat
  */
 public abstract class Vehicles {
-
+    private String name;
     private int capacity;
     private boolean specialNeeds;
     private boolean AC;
     private boolean WIFI;
-
-    public Vehicles(int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
+    
+    public void bookSeat(){
+        capacity--;
+    }
+    public Vehicles(String name,int capacity, boolean specialNeeds, boolean AC, boolean WIFI) {
+        this.name = name;
         this.capacity = capacity;
         this.specialNeeds = specialNeeds;
         this.AC = AC;
         this.WIFI = WIFI;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCapacity() {

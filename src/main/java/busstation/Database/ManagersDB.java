@@ -77,4 +77,8 @@ public class ManagersDB {
         manager.setPassword(newPassword);
         return true;
     }
+      public ArrayList<Manager> getManagers(){
+        
+        return managersDB;
+    }
 }
